@@ -1,0 +1,3 @@
+[submodule "apps_ext/django-userena"]
+	path = apps_ext/django-userena
+	url = git@github.com:barszczmm/django-userena.git
