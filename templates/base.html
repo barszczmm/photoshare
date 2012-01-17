@@ -53,18 +53,14 @@
 										<ul>
 											<li class="account">
 											{% if user.get_profile %}
-												<a href="{% url userena_profile_detail user.username %}">{{ user.username }}</a>
+												<a href="{{ user.get_profile.get_absolute_url }}">{{ user.username }}</a>
 												<ul>
 													<li><a href="{% url userena_profile_edit user.username %}">{% trans "Edit Profile" %}</a></li>
-													<li><a href="{% url userena_password_change user.username %}">{% trans "Change password" %}</a></li>
-													<li><a href="{% url userena_email_change user.username %}">{% trans "Change email" %}</a></li>
 													<li><a href="{% url userena_signout %}">{% trans "Signout" %}</a></li>
 												</ul>
 											{% else %}
 												<span>{{ user.username }}</span>
 												<ul>
-													<li><a href="{% url userena_password_change user.username %}">{% trans "Change password" %}</a></li>
-													<li><a href="{% url userena_email_change user.username %}">{% trans "Change email" %}</a></li>
 													<li><a href="{% url userena_signout %}">{% trans "Signout" %}</a></li>
 												</ul>
 											{% endif %}
@@ -78,8 +74,7 @@
 								{% else %}
 									<div class="unauthenticated">
 										<ul>
-											<li><a href="{% url userena_signin %}">{% trans "Signin" %}</a></li>
-											<li><a href="{% url userena_signup %}">{% trans "Signup" %}</a></li>
+											<li><a href="{% url userena_signin %}">{% trans "Signing in" %} / {% trans "Signing up" %}</a></li>
 										</ul>
 									</div>
 								{% endif %}
@@ -92,9 +87,9 @@
 							{% block header_menu %}
 								<ul>
 									<li><a href="{% url userena_profile_list %}">{% trans "Profiles" %}</a></li>
-									<li><a href="#">{% trans "Photos" %}</a></li>
+									<li><a href="{% url photos_list %}">{% trans "Photos" %}</a></li>
 									{% if user.is_authenticated %}
-									<li><a href="#">{% trans "Post a photo" %}</a></li>
+									<li><a href="{% url photos_add %}">{% trans "Post a photo" %}</a></li>
 									{% endif %}
 									<li><a href="#">{% trans "Forum" %}</a></li>
 								</ul>
