@@ -9,11 +9,11 @@
 <ul id="profile_list">
 	{% for profile in profile_list %}
 	<li class="profile">
-		<a href="{% url userena_profile_detail profile.user.username %}" title="{{ profile.user.username }}">
+		<a href="{{ profile.get_absolute_url }}" title="{{ profile.user.username }}">
 			<img src="{{ profile.get_mugshot_url }}" alt="{{ profile.user.username }}" title="{{ profile.user.username }}" />
 		</a>
 		<div class="info">
-			<a class="user" href="{% url userena_profile_detail profile.user.username %}">{{ profile.user.username }}</a>
+			<p class="meta"><a class="username" href="{{ profile.get_absolute_url }}">{{ profile.user.username }}</a></p>
 		</div>
 	</li>
 	{% endfor %}

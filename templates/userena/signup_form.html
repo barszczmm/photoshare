@@ -1,11 +1,19 @@
-{% extends 'userena/base_userena.html' %}
+{% extends 'userena/signin_form.html' %}
 {% load i18n %}
 
 {% block title %}{% trans "Signup" %}{% endblock %}
 
-{% block maintitle %}{% trans "Signup" %}{% endblock %}
+{% block subtitle %}<span>{% trans "Signup" %}</span>{% endblock %}
 
-{% block main %}
+
+{% block tabs_titles %}
+<li class="tab-title"><a href="{% url userena_signin %}">{% trans "Signin" %}</a></li>
+<li class="tab-title"><a href="{% url userena_password_reset %}">{% trans "Restore password" %}</a></li>
+<li class="tab-title active"><a href="{% url userena_signup %}">{% trans "Signup" %}</a></li>
+{% endblock %}
+
+
+{% block tab_content %}
 <form action="" method="post">
 	{% csrf_token %}
 	<fieldset>

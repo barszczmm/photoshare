@@ -1,27 +1,30 @@
 {% extends 'userena/base_userena.html' %}
 {% load i18n %}
-{% load comments %}
 
 {% block title %}{{ profile.user.username }}{% endblock %}
 
-{% block maintitle %}{{ profile.user.username }}{% endblock %}
+{% block maintitle %}<a href="{% url userena_profile_list %}">{% trans "Profile" %}</a> / <a href="{{ profile.get_absolute_url }}">{{ profile.user.username }}</a>{% endblock %}
+{% block subtitle %}<span>{% trans "Info" %}</span>{% endblock %}
 
 {% block main %}
 <div class="actions">
-	<a href="{% url userena_umessages_compose_to user.username %}">{% trans "Send message" %}</a>
+	<a href="{% url userena_umessages_compose_to profile.user.username %}">{% trans "Send message" %}</a>
 </div>
 
-<div class="tabs">
+<div class="tabs no-hash">
 
 	<ul class="tabs-titles">
-		<li class="tab-title active"><a href="#info">{% trans "Info" %}</a></li>
-		<li class="tab-title"><a href="#photos">{% trans "Photos" %}</a></li>
-		<li class="tab-title"><a href="#comments">{% trans "Comments" %}</a></li>
+		{% block tabs_titles %}
+		<li class="tab-title active"><a href="{{ profile.get_absolute_url }}">{% trans "Info" %}</a></li>
+		<li class="tab-title"><a href="{% url profile_photos profile.user.username %}">{% trans "Photos" %}</a></li>
+		<li class="tab-title"><a href="{% url profile_comments profile.user.username %}">{% trans "Comments" %}</a></li>
+		{% endblock %}
 	</ul>
 
 	<div class="tabs-contents">
 	
 		<div class="tab-content active">
+			{% block tab_content %}
 			<div id="profile">
 				<img src="{{ profile.get_mugshot_url }}" alt="{% trans "Your mugshot" %}" />
 				<div class="info">
@@ -45,46 +48,10 @@
 				{% endif %}
 				</div>
 			</div>
-		</div>
-
-		<div class="tab-content">
-			photos
-		</div>
-
-		<div class="tab-content">
-			{% if user.get_profile %}
-				{% get_comment_form for profile as form %}
-				<form action="{% comment_form_target %}" method="post" id="post_comment">
-					{% csrf_token %}
-					<fieldset>
-						{% for hidden in form.hidden_fields %}
-							{{ hidden }}
-						{% endfor %}
-						<p>
-							<label for="id_comment">{% trans "Add comment" %}</label>
-							{{ form.comment }}
-						</p>
-					</fieldset>
-					<input type="submit" name="submit" value="{% trans "Submit" %}" />
-				</form>
-			{% endif %}
-
-			{% get_comment_list for profile as comment_list %}
-			<ul id="comment_list">
-			{% for comment in comment_list %}
-				<li class="comment {% if comment.user == user %} by-me{% endif %}{% if comment.user == profile.user %} by-user{% endif %}">
-					<a href="{% url userena_profile_detail comment.user.username %}" title="{{ comment.user.username }}">
-						<img src="{{ comment.user.get_profile.get_mugshot_url }}" alt="{{ comment.user.username }}" title="{{ comment.user.username }}" />
-					</a>
-					<div class="info">
-						<p class="meta"><a class="username" href="{% url userena_profile_detail comment.user.username %}">{{ comment.user.username }}</a> <time class="datetime" datetime="{{ comment.submit_date }}">({{ comment.submit_date }})</time></p>
-						<p class="body">{{ comment.comment|linebreaksbr }}</p>
-					</div>
-				</li>
-			{% endfor %}
-			</ul>
+			{% endblock %}
 		</div>
 
 	</div><!-- .tabs-contents -->
+</div>
 
 {% endblock %}

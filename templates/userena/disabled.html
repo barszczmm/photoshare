@@ -3,7 +3,8 @@
 
 {% block title %}{% trans "Disabled account" %}{% endblock %}
 
-{% block maintitle %}{% trans "Your account has been disabled" %}{% endblock %}
+{% block maintitle %}{{ user.username }}{% endblock %}
+{% block subtitle %}<span>{% trans "Your account has been disabled" %}</span>{% endblock %}
 
 {% block main %}
 <p>{% trans "It seems your account has been disabled." %}</p>

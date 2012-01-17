@@ -1,9 +1,10 @@
 {% extends 'userena/base_userena.html' %}
 {% load i18n %}
 
-{% block title %}{% trans "Email verification failed." %}{% endblock %}
+{% block title %}{% trans "Email verification failed" %}{% endblock %}
 
-{% block maintitle %}{% trans "Your email could not be verified.." %}{% endblock %}
+{% block maintitle %}{{ user.username }}{% endblock %}
+{% block subtitle %}<span>{% trans "Your email could not be verified" %}</span>{% endblock %}
 
 {% block main %}
 <p>{% trans "Your email could not be verified..." %}</p>

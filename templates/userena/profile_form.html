@@ -3,16 +3,32 @@
 
 {% block title %}{% trans "Edit Profile" %}{% endblock %}
 
-{% block maintitle %}{{ profile.user.username }}{% endblock %}
+{% block maintitle %}<a href="{{ user.get_profile.get_absolute_url }}">{{ user.username }}</a>{% endblock %}
 {% block subtitle %}<span>{% trans "Edit Profile" %}</span>{% endblock %}
 
 {% block main %}
+<div class="tabs no-hash">
 
-<form action="" enctype="multipart/form-data" method="post">
-	{% csrf_token %}
-	<fieldset>
-		{{ form.as_p }}
-	</fieldset>
-	<input type="submit" value="{% trans "Save changes" %}" />
-</form>
+	<ul class="tabs-titles">
+		{% block tabs_titles %}
+		<li class="tab-title active"><a href="{% url userena_profile_edit user.username %}">{% trans "Edit Profile" %}</a></li>
+		<li class="tab-title"><a href="{% url userena_password_change user.username %}">{% trans "Change password" %}</a></li>
+		<li class="tab-title"><a href="{% url userena_email_change user.username %}">{% trans "Change email" %}</a></li>
+		{% endblock %}
+	</ul>
+
+	<div class="tabs-contents">
+
+		<div class="tab-content active">
+			{% block tab_content %}
+				<form action="" enctype="multipart/form-data" method="post">
+					{% csrf_token %}
+					{% include "form_snippet.html" %}
+					<input type="submit" value="{% trans "Save changes" %}" />
+				</form>
+			{% endblock %}
+		</div>
+
+	</div><!-- .tabs-contents -->
+</div>
 {% endblock %}
