@@ -1,17 +1,35 @@
-$('.errorlist').each(
-	function() {
-		if ($('textarea', $(this).next()).length) {
-			$(this).animate({width: 320}, 500);
-		} else {
-			$(this).animate({width: 700}, 1000);
-		}
-	}
-);
 
+// animate error messages
+var animateErrors = function() {
+	$('.errorlist').each(
+		function() {
+			if ($('textarea', $(this).next()).length) {
+				$(this).animate({width: 320}, 500);
+			} else {
+				$(this).animate({width: 700}, 1000);
+			}
+		}
+	);
+}
+
+animateErrors();
 
 $(document).ready(function() {
 
 	//
+	$('#post_comment input[type="submit"]').click(
+		function() {
+			var $comment = $(this).parents('form:first').find('p textarea');
+			if ($comment.val() == '') {
+				$comment.parent().prev('.errorlist').remove();
+				$comment.parent().before('<ul class="errorlist"><li>'+field_required_error+'</li></ul>');
+				animateErrors();
+				return false;
+			}
+		}
+	);
+
+	// animate submit button opacity
 	$('input[type="submit"]').hover(
 		function() {
 			$(this).fadeTo(200, 0.5);
@@ -21,7 +39,7 @@ $(document).ready(function() {
 		}
 	);
 
-
+	// show usermenu submenu
 	$('#user_menu .authenticated .account').hover(
 		function() {
 			$('ul', this).slideDown();
@@ -31,7 +49,7 @@ $(document).ready(function() {
 		}
 	).find('ul').css('opacity', 0.9);
 
-	
+	// tabs
 	$('.tabs').each(
 		function() {
 			var $tabs = $(this);
