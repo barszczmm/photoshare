@@ -1,0 +1,7 @@
+<uwsgi>
+	<socket>127.0.0.1:4002</socket>
+	<home>/home/barszcz/www/dev/photoshare/app/photoshare_venv</home>
+	<pythonpath>/home/barszcz/www/dev/photoshare/app/photoshare/projects/photoshare/photoshare</pythonpath>
+	<module>wsgi</module>
+	<master/>
+</uwsgi>

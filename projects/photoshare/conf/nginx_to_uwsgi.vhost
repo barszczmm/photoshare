@@ -1,0 +1,24 @@
+server {
+	listen 80;
+	server_name photoshare.dev.barszcz.info;
+
+	access_log  /var/log/nginx/photoshare.access.log;
+	error_log   /var/log/nginx/photoshare.error.log;
+
+	# Static files location
+	location /static {
+		root     /home/barszcz/www/dev/photoshare/app/photoshare/projects/photoshare/;
+		expires  30d;
+	}
+
+	# Uploaded files
+	location /uploads {
+		root     /home/barszcz/www/dev/photoshare/app/photoshare/;
+		expires  30d;
+	}
+
+	location / {
+		uwsgi_pass 127.0.0.1:4002;
+		include uwsgi_params;
+	}
+}
