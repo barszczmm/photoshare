@@ -1,0 +1,49 @@
+{% extends 'userena/profile_detail.html' %}
+{% load i18n comments %}
+
+
+{% block subtitle %}<span>{% trans "Comments" %}</span>{% endblock %}
+
+
+{% block tabs_titles %}
+<li class="tab-title"><a href="{{ profile.get_absolute_url }}">{% trans "Info" %}</a></li>
+<li class="tab-title"><a href="{% url profile_photos profile.user.username %}">{% trans "Photos" %}</a></li>
+<li class="tab-title active"><a href="{% url profile_comments profile.user.username %}">{% trans "Comments" %}</a></li>
+{% endblock %}
+
+
+{% block tab_content %}
+
+	{% if user.get_profile %}
+		{% get_comment_form for profile as form %}
+		<form action="{% comment_form_target %}" method="post" id="post_comment">
+			{% csrf_token %}
+			<fieldset>
+				{% for hidden in form.hidden_fields %}
+					{{ hidden }}
+				{% endfor %}
+				<p>
+					<label for="id_comment">{% trans "Add comment" %}</label>
+					{{ form.comment }}
+				</p>
+			</fieldset>
+			<input type="submit" name="submit" value="{% trans "Submit" %}" />
+		</form>
+	{% endif %}
+
+	{% get_comment_list for profile as comment_list %}
+	<ul id="comment_list">
+	{% for comment in comment_list %}
+		<li class="comment {% if comment.user == user %} by-me{% endif %}{% if comment.user == profile.user %} by-user{% endif %}">
+			<a href="{% url userena_profile_detail comment.user.username %}" title="{{ comment.user.username }}">
+				<img src="{{ comment.user.get_profile.get_mugshot_url }}" alt="{{ comment.user.username }}" title="{{ comment.user.username }}" />
+			</a>
+			<div class="info">
+				<p class="meta"><a class="username" href="{% url userena_profile_detail comment.user.username %}">{{ comment.user.username }}</a> <time class="datetime" datetime="{{ comment.submit_date }}">({{ comment.submit_date }})</time></p>
+				<p class="body">{{ comment.comment|linebreaksbr }}</p>
+			</div>
+		</li>
+	{% endfor %}
+	</ul>
+
+{% endblock %}
