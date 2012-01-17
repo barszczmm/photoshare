@@ -8,7 +8,7 @@ urlpatterns = patterns('',
         PhotosListView.as_view(),
         name='photos_list_photos'),
 
-    url(r'^accounts/(?P<username>[\.\w]+)/photos/$',
+    url(r'^users/(?P<username>[\.\w]+)/photos/$',
         PhotosListView.as_view(),
         name='profile_photos'),
 
@@ -27,5 +27,9 @@ urlpatterns = patterns('',
     url(r'^photos/(?P<photo_id>[\d]+)/delete/$',
         PhotoDeleteView.as_view(),
         name='photos_remove_photo'),
+
+    url(r'^photos/(?P<photo_id>[\d]+)/comments/$',
+        PhotoDetailView.as_view(template_name='photos/photo_comments.html'),
+        name='photos_comments_photo'),
 
 )
