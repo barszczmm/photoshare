@@ -1,0 +1,498 @@
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+#
+# Maciej Marczewski <maciej@marczewski.net.pl>, 2012.
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-01-17 22:18+0100\n"
+"PO-Revision-Date: 2012-01-17 22:58+0100\n"
+"Last-Translator: Maciej Marczewski <maciej@marczewski.net.pl>\n"
+"Language-Team: Polish <kde-i18n-doc@kde.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
+"|| n%100>=20) ? 1 : 2)\n"
+"X-Generator: Lokalize 1.0\n"
+
+#: templates/base.html:33
+msgid "This field is required."
+msgstr ""
+
+#: templates/base.html:65
+msgid "Logged in as"
+msgstr "Zalogowano jako"
+
+#: templates/base.html:71 templates/userena/email_change_complete.html:10
+#: templates/userena/email_confirm_complete.html:10
+#: templates/userena/email_confirm_fail.html:10
+#: templates/userena/email_form.html:10
+#: templates/userena/password_complete.html:10
+#: templates/userena/password_form.html:10
+#: templates/userena/profile_form.html:4 templates/userena/profile_form.html:7
+#: templates/userena/profile_form.html:14
+msgid "Edit Profile"
+msgstr "Edytuj profil"
+
+#: templates/base.html:72 templates/base.html.py:77
+msgid "Signout"
+msgstr "Wyloguj"
+
+#: templates/base.html:83 templates/umessages/message_detail.html:4
+#: templates/umessages/message_detail.html:6
+#: templates/umessages/message_form.html:4
+#: templates/umessages/message_form.html:6
+#: templates/umessages/message_list.html:4
+#: templates/umessages/message_list.html:6
+msgid "Messages"
+msgstr "Wiadomości"
+
+#: templates/base.html:83
+#, python-format
+msgid "%(unread_message_count)s new"
+msgstr "%(unread_message_count)s nowych"
+
+#: templates/base.html:90 templates/userena/signin_form.html:6
+msgid "Signing in"
+msgstr "Logowanie"
+
+#: templates/base.html:90 templates/userena/signin_form.html:6
+msgid "Signing up"
+msgstr "Rejestracja"
+
+#: templates/base.html:102 templates/userena/profile_detail.html:4
+#: templates/userena/profile_detail.html:6
+#: templates/userena/profile_form.html:4 templates/userena/profile_form.html:6
+#: templates/userena/profile_list.html:4 templates/userena/profile_list.html:6
+msgid "Users"
+msgstr "Użytkownicy"
+
+#: templates/base.html:103 templates/userena/profile_detail.html:19
+msgid "Photos"
+msgstr "Zdjęcia"
+
+#: templates/base.html:104
+msgid "Post a photo"
+msgstr "Dodaj zdjęcie"
+
+#: templates/base.html:105
+msgid "Forum"
+msgstr "Forum"
+
+#: templates/umessages/message_detail.html:4
+#: templates/umessages/message_detail.html:6
+#: templates/umessages/message_form.html:4
+#: templates/umessages/message_form.html:6
+#, python-format
+msgid "Conversation with %(recipient)s"
+msgstr "Rozmowa z %(recipient)s"
+
+#: templates/umessages/message_detail.html:10
+msgid "Send new message"
+msgstr "Wyślij nową wiadomość"
+
+#: templates/umessages/message_form.html:4
+msgid "Compose message"
+msgstr "Utwórz wiadomość"
+
+#: templates/umessages/message_form.html:7
+#, python-format
+msgid "Compose message to <a href=\"%(profile_detail_url)s\">%(username)s</a>"
+msgstr ""
+"Utwórz wiadomość do <a href=\"%(profile_detail_url)s\">%(username)s</a>"
+
+#: templates/umessages/message_form.html:11
+msgid "Cancel and go back"
+msgstr "Anuluj i cofnij"
+
+#: templates/umessages/message_form.html:30
+msgid "Send"
+msgstr "Wyślij"
+
+#: templates/umessages/message_list.html:7
+#, python-format
+msgid "%(unread_message_count)s new messages"
+msgstr "%(unread_message_count)s nowych wiadomości"
+
+#: templates/umessages/message_list.html:18
+#: templates/umessages/message_list.html:25
+#, python-format
+msgid "Conversation with <span class=\"username\">%(recipient)s</span>"
+msgstr "Rozmowa z <span class=\"username\">%(recipient)s</span>"
+
+#: templates/umessages/message_list.html:28
+#, python-format
+msgid "%(unread_between_count)s new messages"
+msgstr "%(unread_between_count)s nowych wiadomości"
+
+#: templates/umessages/message_list.html:29
+#, python-format
+msgid ""
+"Last message <time class=\"datetime\" datetime=\"%(latest_message_at)s\">(%"
+"(latest_message_at)s)</time>: <span>%(latest_message)s</span>"
+msgstr ""
+"Ostatnia wiadomość <time class=\"datetime\" "
+"datetime=\"%(latest_message_at)s\">(%"
+"(latest_message_at)s)</time>: <span>%(latest_message)s</span>"
+
+#: templates/userena/activate_fail.html:4
+msgid "Account activation failed."
+msgstr "Aktywacja konta nie powidła się."
+
+#: templates/userena/activate_fail.html:6
+#: templates/userena/password_reset_complete.html:12
+#: templates/userena/password_reset_confirm_form.html:12
+#: templates/userena/password_reset_done.html:12
+#: templates/userena/password_reset_form.html:12
+#: templates/userena/signin_form.html:16
+#: templates/userena/signup_complete.html:6
+#: templates/userena/signup_form.html:4 templates/userena/signup_form.html:6
+#: templates/userena/signup_form.html:12 templates/userena/signup_form.html:36
+msgid "Signup"
+msgstr "Zarejestruj się"
+
+#: templates/userena/activate_fail.html:7
+msgid "Your account could not be activated."
+msgstr "Twoje konto nie mogło zostać aktywowane."
+
+#: templates/userena/activate_fail.html:10
+msgid ""
+"Your account could not be activated. This could be because your activation "
+"link has aged."
+msgstr ""
+
+#: templates/userena/activate_fail.html:11
+msgid ""
+"Please try signing up again or contact us if you think something went wrong."
+msgstr ""
+
+#: templates/userena/disabled.html:4
+msgid "Disabled account"
+msgstr ""
+
+#: templates/userena/disabled.html:7
+msgid "Your account has been disabled"
+msgstr ""
+
+#: templates/userena/disabled.html:10
+msgid "It seems your account has been disabled."
+msgstr ""
+
+#: templates/userena/disabled.html:11
+msgid ""
+"If you feel that injustice has been done to you, feel free to contact the "
+"administrators to find out why"
+msgstr ""
+
+#: templates/userena/email_change_complete.html:4
+#: templates/userena/email_change_complete.html:6
+msgid "Email verification"
+msgstr ""
+
+#: templates/userena/email_change_complete.html:11
+#: templates/userena/email_confirm_complete.html:11
+#: templates/userena/email_confirm_fail.html:11
+#: templates/userena/email_form.html:11
+#: templates/userena/password_complete.html:11
+#: templates/userena/password_form.html:4
+#: templates/userena/password_form.html:6
+#: templates/userena/password_form.html:11
+#: templates/userena/password_form.html:19
+#: templates/userena/profile_form.html:15
+msgid "Change password"
+msgstr "Zmień hasło"
+
+#: templates/userena/email_change_complete.html:12
+#: templates/userena/email_confirm_complete.html:12
+#: templates/userena/email_confirm_fail.html:12
+#: templates/userena/email_form.html:4 templates/userena/email_form.html:6
+#: templates/userena/email_form.html:12 templates/userena/email_form.html:19
+#: templates/userena/password_complete.html:12
+#: templates/userena/password_form.html:12
+#: templates/userena/profile_form.html:16
+msgid "Change email"
+msgstr "Zmień adres email"
+
+#: templates/userena/email_change_complete.html:16
+#, python-format
+msgid "You have received an email at %(email)s."
+msgstr ""
+
+#: templates/userena/email_change_complete.html:17
+#, python-format
+msgid ""
+"To associate this email address with your account (%(username)s) click on "
+"the link provided in this email."
+msgstr ""
+
+#: templates/userena/email_confirm_complete.html:4
+#: templates/userena/email_confirm_complete.html:6
+msgid "Email changed"
+msgstr "Adres email zmieniony"
+
+#: templates/userena/email_confirm_complete.html:16
+#, python-format
+msgid ""
+"Your new email address is saved. You can continue using %(site)s with this "
+"email."
+msgstr ""
+
+#: templates/userena/email_confirm_fail.html:4
+#: templates/userena/email_confirm_fail.html:6
+msgid "Email verification failed"
+msgstr ""
+
+#: templates/userena/email_confirm_fail.html:16
+msgid "Your email could not be verified..."
+msgstr ""
+
+#: templates/userena/email_confirm_fail.html:17
+msgid "You could try changing it again in your account settings."
+msgstr ""
+
+#: templates/userena/password_complete.html:4
+#: templates/userena/password_complete.html:6
+msgid "Password changed"
+msgstr "Hasło zmienione"
+
+#: templates/userena/password_complete.html:16
+msgid "Your password has been changed"
+msgstr ""
+
+#: templates/userena/password_complete.html:17
+msgid "From now on you can use your new password to signin"
+msgstr ""
+
+#: templates/userena/password_reset_complete.html:4
+msgid "Password reset"
+msgstr ""
+
+#: templates/userena/password_reset_complete.html:6
+msgid "Your password has been reset"
+msgstr ""
+
+#: templates/userena/password_reset_complete.html:10
+#: templates/userena/password_reset_confirm_form.html:10
+#: templates/userena/password_reset_done.html:10
+#: templates/userena/password_reset_form.html:10
+#: templates/userena/signin_form.html:4 templates/userena/signin_form.html:7
+#: templates/userena/signin_form.html:14 templates/userena/signin_form.html:44
+#: templates/userena/signup_form.html:10
+msgid "Signin"
+msgstr ""
+
+#: templates/userena/password_reset_complete.html:11
+#: templates/userena/password_reset_confirm_form.html:11
+#: templates/userena/password_reset_done.html:11
+#: templates/userena/password_reset_form.html:4
+#: templates/userena/password_reset_form.html:6
+#: templates/userena/password_reset_form.html:11
+#: templates/userena/signin_form.html:15 templates/userena/signup_form.html:11
+msgid "Restore password"
+msgstr "Odzyskaj hasło"
+
+#: templates/userena/password_reset_complete.html:18
+#, python-format
+msgid ""
+"You can now <a href=\"%(signin_url)s\">signin</a> with your new password."
+msgstr ""
+
+#: templates/userena/password_reset_confirm_form.html:4
+#: templates/userena/password_reset_confirm_form.html:6
+#: templates/userena/password_reset_confirm_form.html:20
+msgid "Reset password"
+msgstr ""
+
+#: templates/userena/password_reset_done.html:4
+#: templates/userena/password_reset_done.html:6
+msgid "Password reset email sent"
+msgstr ""
+
+#: templates/userena/password_reset_done.html:17
+msgid ""
+"An e-mail has been send to you which explains how to reset your password."
+msgstr ""
+
+#: templates/userena/password_reset_form.html:20
+msgid "Send password"
+msgstr ""
+
+#: templates/userena/profile_detail.html:7
+#: templates/userena/profile_detail.html:18
+msgid "Info"
+msgstr ""
+
+#: templates/userena/profile_detail.html:11
+msgid "Send message"
+msgstr "Wyślij wiadomość"
+
+#: templates/userena/profile_detail.html:20
+msgid "Comments"
+msgstr "Komentarze"
+
+#: templates/userena/profile_detail.html:29
+msgid "Your mugshot"
+msgstr ""
+
+#: templates/userena/profile_detail.html:32
+msgid "Name"
+msgstr ""
+
+#: templates/userena/profile_detail.html:35
+msgid "Gender"
+msgstr "Płeć"
+
+#: templates/userena/profile_detail.html:38
+msgid "Email"
+msgstr "Adres email"
+
+#: templates/userena/profile_detail.html:41
+msgid "Birthday"
+msgstr "Urodziny"
+
+#: templates/userena/profile_detail.html:44
+msgid "Website"
+msgstr "Strona www"
+
+#: templates/userena/profile_detail.html:47
+msgid "About me"
+msgstr "O mnie"
+
+#: templates/userena/profile_form.html:27
+msgid "Save changes"
+msgstr "Zapisz zmiany"
+
+#: templates/userena/profile_list.html:12
+msgid "New"
+msgstr ""
+
+#: templates/userena/profile_list.html:13
+msgid "Top"
+msgstr ""
+
+#: templates/userena/profile_list.html:14
+msgid "Hot"
+msgstr ""
+
+#: templates/userena/signout.html:4
+msgid "Signed out"
+msgstr ""
+
+#: templates/userena/signout.html:6
+msgid "You have been signed out"
+msgstr ""
+
+#: templates/userena/signout.html:9
+msgid "You have been signed out. Till we meet again."
+msgstr ""
+
+#: templates/userena/signup_complete.html:4
+msgid "Signup almost done!"
+msgstr ""
+
+#: templates/userena/signup_complete.html:7
+msgid "Thank you for signing up with us!"
+msgstr ""
+
+#: templates/userena/signup_complete.html:12
+msgid ""
+"You have been sent an e-mail with an activation link to the supplied email."
+msgstr ""
+
+#: templates/userena/signup_complete.html:13
+#, python-format
+msgid ""
+"We will store your signup information for %(userena_activation_days)s days "
+"on our server. "
+msgstr ""
+
+#: templates/userena/signup_complete.html:15
+msgid "You can now use the supplied credentials to signin."
+msgstr ""
+
+#: templates/userena/emails/activation_email_message.txt:2
+#: templates/userena/emails/confirmation_email_message_new.txt:2
+#: templates/userena/emails/confirmation_email_message_old.txt:2
+#, python-format
+msgid "Dear %(username)s,"
+msgstr ""
+
+#: templates/userena/emails/activation_email_message.txt:4
+#, python-format
+msgid "Thank you for signing up at %(site)s."
+msgstr ""
+
+#: templates/userena/emails/activation_email_message.txt:6
+msgid "To activate your account you should click on the link below:"
+msgstr ""
+
+#: templates/userena/emails/activation_email_message.txt:10
+#: templates/userena/emails/confirmation_email_message_new.txt:11
+#: templates/userena/emails/confirmation_email_message_old.txt:8
+#: templates/userena/emails/password_reset_message.txt:14
+msgid "Thanks for using our site!"
+msgstr "Dziękujemy za korzystanie z naszej strony!"
+
+#: templates/userena/emails/activation_email_message.txt:12
+#: templates/userena/emails/confirmation_email_message_new.txt:13
+#: templates/userena/emails/confirmation_email_message_old.txt:10
+#: templates/userena/emails/password_reset_message.txt:16
+msgid "Sincerely"
+msgstr ""
+
+#: templates/userena/emails/activation_email_subject.txt:2
+#, python-format
+msgid "Your signup at %(site)s."
+msgstr ""
+
+#: templates/userena/emails/confirmation_email_message_new.txt:4
+#, python-format
+msgid "You requested a change of your email address at %(site)s."
+msgstr ""
+
+#: templates/userena/emails/confirmation_email_message_new.txt:7
+msgid "Please confirm this email address by clicking on the link below:"
+msgstr ""
+
+#: templates/userena/emails/confirmation_email_message_old.txt:4
+#, python-format
+msgid "There was a request to change your email address at %(site)s."
+msgstr ""
+
+#: templates/userena/emails/confirmation_email_message_old.txt:6
+#, python-format
+msgid ""
+"An email has been send to %(new_email)s which contains a verification link. "
+"Click on the link in this email to activate it."
+msgstr ""
+
+#: templates/userena/emails/confirmation_email_subject_new.txt:2
+#, python-format
+msgid "Email verification for %(site)s."
+msgstr ""
+
+#: templates/userena/emails/confirmation_email_subject_old.txt:2
+#, python-format
+msgid "A request to change your email address is made at %(site)s."
+msgstr ""
+
+#: templates/userena/emails/password_reset_message.txt:2
+#, python-format
+msgid ""
+"You're receiving this e-mail because you requested a password reset\n"
+"for your user account at %(site_name)s"
+msgstr ""
+
+#: templates/userena/emails/password_reset_message.txt:5
+msgid "Please go to the following page and choose a new password:"
+msgstr ""
+
+#: templates/userena/emails/password_reset_message.txt:10
+#, python-format
+msgid ""
+"\n"
+"Your username, in case you've forgotten: %(username)s\n"
+msgstr ""
+
