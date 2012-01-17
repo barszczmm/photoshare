@@ -61,6 +61,11 @@ USE_L10N = True
 # If you set this to False, Django will not use timezone-aware datetimes.
 USE_TZ = True
 
+# A tuple of directories where Django looks for translation files.
+LOCALE_PATHS = (
+    os.path.join(PROJECT_ROOT, '../../../locale/'),
+)
+
 # Absolute filesystem path to the directory that will hold user-uploaded files.
 # Example: "/home/media/media.lawrence.com/media/"
 MEDIA_ROOT = os.path.join(PROJECT_ROOT, '../../../uploads/')
