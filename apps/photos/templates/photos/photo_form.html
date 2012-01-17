@@ -3,7 +3,7 @@
 
 {% block title %}{% trans "Add photo" %}{% endblock %}
 
-{% block maintitle %}{% trans "Photos" %}{% endblock %}
+{% block maintitle %}<a href="{% url photos_list_photos %}">{% trans "Photos" %}</a>{% endblock %}
 {% block subtitle %}<span>{% trans "Post a photo" %}</span>{% endblock %}
 
 {% block main %}
