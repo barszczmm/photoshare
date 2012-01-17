@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block title %}{% trans "Add photo" %}{% endblock %}
+
+{% block maintitle %}{% trans "Photos" %}{% endblock %}
+{% block subtitle %}<span>{% trans "Post a photo" %}</span>{% endblock %}
+
+{% block main %}
+<form action="" enctype="multipart/form-data" method="post">
+	{% csrf_token %}
+	{% include "form_snippet.html" %}
+	<input type="submit" value="{% trans "Save"%}" />
+</form>
+{% endblock %}
