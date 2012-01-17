@@ -1,3 +1,4 @@
+from django.core.urlresolvers import reverse
 from django.shortcuts import get_object_or_404
 from django.http import Http404
 from django.utils.decorators import method_decorator
@@ -81,8 +82,8 @@ class PhotoCreateView(CreateView):
         return form
 
     @method_decorator(login_required)
-    def dispatch(self, *args, **kwargs):
-        return super(PhotoCreateView, self).dispatch(*args, **kwargs)
+    def dispatch(self, request, *args, **kwargs):
+        return super(PhotoCreateView, self).dispatch(request, *args, **kwargs)
 
 
 class PhotoUpdateView(UpdateView):
@@ -94,9 +95,12 @@ class PhotoUpdateView(UpdateView):
     form_class = PhotoForm
     pk_url_kwarg = 'photo_id'
 
+    def get_template_names(self):
+        return ['photos/photo_form_edit.html']
+
     @method_decorator(login_required)
-    def dispatch(self, *args, **kwargs):
-        return super(PhotoUpdateView, self).dispatch(*args, **kwargs)
+    def dispatch(self, request, *args, **kwargs):
+        return super(PhotoUpdateView, self).dispatch(request, *args, **kwargs)
 
 
 class PhotoDeleteView(DeleteView):
@@ -107,8 +111,11 @@ class PhotoDeleteView(DeleteView):
     model = Photo
     pk_url_kwarg = 'photo_id'
 
+    def get_success_url(self):
+        return reverse('profile_photos', kwargs={'username': self.request.user.username})
+
     @method_decorator(login_required)
-    def dispatch(self, *args, **kwargs):
-        return super(PhotoDeleteView, self).dispatch(*args, **kwargs)
+    def dispatch(self, request, *args, **kwargs):
+        return super(PhotoDeleteView, self).dispatch(request, *args, **kwargs)
 
 
