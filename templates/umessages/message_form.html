@@ -1,9 +1,9 @@
 {% extends 'umessages/base_message.html' %}
 {% load i18n %}
 
-{% block title %}{% blocktrans with recipients.0.username as username %}Compose message to {{ username }}{% endblocktrans %}{% endblock %}
+{% block title %}{% blocktrans with recipients.0.username as recipient %}Compose message to {{ recipient }}{% endblocktrans %}{% endblock %}
 
-{% block maintitle %}<a href="{% url userena_umessages_list %}">{% trans "Messages" %}</a>{% endblock %}
+{% block maintitle %}<a href="{% url userena_umessages_list %}">{% trans "Messages" %}</a> / <a href="{% url userena_umessages_detail recipients.0.username %}">{% blocktrans with recipients.0.username as recipient %}Conversation with {{ recipient }}{% endblocktrans %}</a>{% endblock %}
 {% block subtitle %}{% url userena_profile_detail recipients.0.username as profile_detail_url %}<span>{% blocktrans with recipients.0.username as username %}Compose message to <a href="{{ profile_detail_url }}">{{ username }}</a>{% endblocktrans %}</span>{% endblock %}
 
 {% block main %}
