@@ -1,16 +1,27 @@
 {% extends 'umessages/base_message.html' %}
 {% load i18n %}
 
-{% block content_title %}<h2>{% blocktrans %}Conversation with {{ recipient }}{% endblocktrans %}</h2>{% endblock %}
+{% block title %}{% blocktrans %}Conversation with {{ recipient }}{% endblocktrans %}{% endblock %}
 
-{% block content %}
+{% block maintitle %}<a href="{% url userena_umessages_list %}">{% trans "Messages" %}</a>{% endblock %}
+{% block subtitle %}{% url userena_profile_detail recipient as profile_detail_url %}<span>{% blocktrans %}Conversation with <a href="{{ profile_detail_url }}">{{ recipient }}</a>{% endblocktrans %}</span>{% endblock %}
 
-<ul>
+{% block main %}
+<div class="actions">
+	<a href="{% url userena_umessages_compose_to recipient %}">{% trans "Send new message" %}</a>
+</div>
+
+<ul id="message_list">
 {% for message in message_list %}
-<li>
-  {{ message }}
-  <p>{% blocktrans with message.sent_at as sent_at %}Received on {{ sent_at }}{% endblocktrans %}</p>
-</li>
+	<li class="message">
+		<a href="{% url userena_profile_detail message.sender.username %}" title="{{ message.sender.username }}">
+			<img src="{{ message.sender.get_profile.get_mugshot_url }}" alt="{{ message.sender.username }}" title="{{ message.sender.username }}" />
+		</a>
+		<div class="info">
+			<p class="body">{{ message|linebreaksbr }}</p>
+			<time class="datetime" datetime="{{ message.sent_at }}">{{ message.sent_at }}</time>
+		</div><!-- .info -->
+	</li>
 {% endfor %}
 </ul>
 {% endblock %}

@@ -1,14 +1,32 @@
 {% extends 'umessages/base_message.html' %}
 {% load i18n %}
 
-{% block content_title %}<h2>{% trans "Compose" %}</h2>{% endblock %}
+{% block title %}{% blocktrans with recipients.0.username as username %}Compose message to {{ username }}{% endblocktrans %}{% endblock %}
 
-{% block content %}
+{% block maintitle %}<a href="{% url userena_umessages_list %}">{% trans "Messages" %}</a>{% endblock %}
+{% block subtitle %}{% url userena_profile_detail recipients.0.username as profile_detail_url %}<span>{% blocktrans with recipients.0.username as username %}Compose message to <a href="{{ profile_detail_url }}">{{ username }}</a>{% endblocktrans %}</span>{% endblock %}
+
+{% block main %}
+<div class="actions">
+	<a href="javascript: history.go(-1)">{% trans "Cancel and go back" %}</a>
+</div>
+
 <form action="" method="post" id="compose_message_form">
-  {% csrf_token %}
-  <fieldset>
-    <legend>{% trans "Compose message" %}</legend>
-    {{ form.as_p }}
-  </fieldset>
-  <input type="submit" name="send" value="{% trans "Send" %}" />
+	{% csrf_token %}
+	<fieldset>
+		{% for hidden in form.hidden_fields %}
+			{{ hidden }}
+		{% endfor %}
+		<div style="display: none;">
+			{{ form.to.errors }}
+			{{ form.to }}
+		</div>
+		{{ form.body.errors }}
+		<p>
+			{{ form.body.label_tag }}
+			{{ form.body }}
+		</p>
+	</fieldset>
+	<input type="submit" name="send" value="{% trans "Send" %}" />
+</form>
 {% endblock %}

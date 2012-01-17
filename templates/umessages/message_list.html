@@ -1,24 +1,34 @@
 {% extends 'umessages/base_message.html' %}
 {% load i18n umessages_tags %}
 
-{% block content_title %}<h2>{% trans "Messages" %}</h2>{% endblock %}
+{% block title %}{% trans "Messages" %}{% endblock %}
 
-{% block content %}
-{% get_unread_message_count_for user as unread_message_count %}
-{% blocktrans %}{{ unread_message_count }} new messages.{% endblocktrans %}
-<a href="{% url userena_umessages_compose %}">{% trans "Compose" %}</a>
-<ul>
-  {% for message in message_list %}
-  <li>
-  {% if message.from_user == user %}
-  <a href="{% url userena_umessages_detail message.to_user.username %}">{{ message.to_user }}</a>
-  {% get_unread_message_count_between user and message.to_user as unread_between_count %}
-  {% else %}
-  <a href="{% url userena_umessages_detail message.from_user.username %}">{{ message.from_user }}</a>
-  {% get_unread_message_count_between user and message.from_user as unread_between_count %}
-  {% endif %}
-  {% blocktrans with message.latest_message as latest_message %}{{ latest_message }} ({{ unread_between_count }} new){% endblocktrans %}
-  </li>
-  {% endfor %}
+{% block maintitle %}{% trans "Messages" %}{% endblock %}
+{% block subtitle %}{% get_unread_message_count_for user as unread_message_count %}<span>{% blocktrans %}{{ unread_message_count }} new messages{% endblocktrans %}</span>{% endblock %}
+
+{% block main %}
+<ul id="message_list">
+	{% for message in message_list %}
+	<li class="message">
+	{% if message.from_user == user %}
+		<a href="{% url userena_profile_detail message.to_user.username %}" title="{{ message.to_user.username }}">
+			<img src="{{ message.to_user.get_profile.get_mugshot_url }}" alt="{{ message.to_user.username }}" title="{{ message.to_user.username }}" />
+		</a>
+		<div class="info">
+			<p class="user"><a href="{% url userena_umessages_detail message.to_user.username %}">{% blocktrans with message.to_user as recipient %}Conversation with <span>{{ recipient }}</span>{% endblocktrans %}</a></p>
+			{% get_unread_message_count_between user and message.to_user as unread_between_count %}
+	{% else %}
+		<a href="{% url userena_profile_detail message.from_user.username %}" title="{{ message.from_user.username }}">
+			<img src="{{ message.from_user.get_profile.get_mugshot_url }}" alt="{{ message.from_user.username }}" title="{{ message.from_user.username }}" />
+		</a>
+		<div class="info">
+			<p class="user"><a href="{% url userena_umessages_detail message.from_user.username %}">{% blocktrans with message.from_user as recipient %}Conversation with <span>{{ recipient }}</span>{% endblocktrans %}</a>
+			{% get_unread_message_count_between user and message.from_user as unread_between_count %}
+	{% endif %}
+			<p class="body">{{ message.latest_message|linebreaksbr }}</p>
+			<p class="new">{% blocktrans %}{{ unread_between_count }} new messages{% endblocktrans %}
+		</div><!-- .info -->
+	</li>
+	{% endfor %}
 </ul>
 {% endblock %}
