@@ -31,20 +31,20 @@
 				{% if profile.user.get_full_name %}
 					<p><strong>{% trans "Name" %}</strong><br /> {{ profile.user.get_full_name }}</p>
 				{% endif %}
+				{% if profile.gender %}
+					<p><strong>{% trans "Gender" %}</strong><br />{{ profile.gender }}</p>
+				{% endif %}
 				{% if profile.user.email %}
 					<p><strong>{% trans "Email" %}</strong><br />{{ profile.user.email }}</p>
 				{% endif %}
-				{% if profile.age %}
-					<p><strong>{% trans "Age" %}</strong><br /> {{ profile.age }}</p>
+				{% if profile.birthday %}
+					<p><strong>{% trans "Birthday" %}</strong><br /> {{ profile.birthday }}</p>
 				{% endif %}
 				{% if profile.website %}
 					<p><strong>{% trans "Website" %}</strong><br /> <a href="{{ profile.website }}">{{ profile.website }}</a></p>
 				{% endif %}
-				{% if profile.location %}
-					<p><strong>{% trans "Location" %}</strong><br />{{ profile.location }}</p>
-				{% endif %}
-				{% if profile.about %}
-					<p><strong>{% trans "About me" %}</strong><br />{{ profile.about|linebreaksbr }}</p>
+				{% if profile.about_me %}
+					<p><strong>{% trans "About me" %}</strong><br />{{ profile.about_me|linebreaksbr }}</p>
 				{% endif %}
 				</div>
 			</div>

@@ -27,7 +27,7 @@
 					<footer>
 						{% get_comment_count for photo as comment_count %}
 						<p class="meta">
-							{% blocktrans with photo.user.get_profile.get_absolute_url as user_url and photo.user.username as username and photo.uploaded as added_at %}Added by <a class="username" href="{{ user_url }}">{{ username }}</a> at <time class="datetime" datetime="{{ added_at }}">{{ added_at }}</time>
+							{% blocktrans with photo.user.get_profile.get_absolute_url as user_url and photo.user.username as username and photo.uploaded_at as added_at %}Added by <a class="username" href="{{ user_url }}">{{ username }}</a> at <time class="datetime" datetime="{{ added_at }}">{{ added_at }}</time>
 							{% endblocktrans %}
 							<span class="comments">{% blocktrans %}{{ comment_count }} comments{% endblocktrans %}</span>
 						</p>

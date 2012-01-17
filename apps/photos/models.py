@@ -15,8 +15,8 @@ class Photo(models.Model):
     user = models.ForeignKey(User)
     title = models.CharField(_("title"), max_length=200)
     image = models.ImageField(_("image"), upload_to=get_upload_path)
-    description = models.TextField(_("description"), blank=True)
-    uploaded = models.DateTimeField(_("uploaded"), auto_now_add=True)
+    description = models.TextField(_("description"), blank=True, null=True)
+    uploaded_at = models.DateTimeField(_("uploaded at"), auto_now_add=True)
 
     @models.permalink
     def get_absolute_url(self):
@@ -24,7 +24,7 @@ class Photo(models.Model):
     get_absolute_url.short_description = 'url'
 
     class Meta:
-        get_latest_by = 'uploaded'
-        ordering = ['-uploaded']
+        get_latest_by = 'uploaded_at'
+        ordering = ['-uploaded_at']
 
 
