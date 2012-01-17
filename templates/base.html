@@ -1,3 +1,4 @@
+{% load i18n umessages_tags %}
 <!DOCTYPE html>
 <!--[if IE 6]>
 <html id="ie6" lang="{{ LANGUAGE_CODE }}">
@@ -19,7 +20,9 @@
 	<meta name="description" content="{% block meta_description %}{% endblock %}" />
 	<meta name="keywords" content="{% block meta_keywords %}{% endblock %}" />
 
-	<link rel="stylesheet" type="text/css" href="{{ settings.STATIC_URL }}css/main.css" />
+	<link href='http://fonts.googleapis.com/css?family=Jockey+One&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+
+	<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/main.css" />
 	{% block extra_css %}{% endblock %}
 
 	<!--[if lt IE 9]>
@@ -36,11 +39,65 @@
 			<div id="header_wrapper_inner">
 				<header id="header">
 
-					<h1 id="header_logo"><a href="http://{{ site.domain }}">{{ site.name }}</a></h1>
+					<hgroup id="header_logo_and_slogan">
+						<h1 id="header_logo"><a href="http://{{ site.domain }}">{{ site.name }}</a></h1>
+						<h2 id="header_slogan">{{ settings.SLOGAN }}</h2>
+					</hgroup>
+
+					<div id="user_menu_wrapper">
+						<nav id="user_menu">
+							{% block user_menu %}
+								{% if user.is_authenticated %}
+									<div class="authenticated">
+										<span class="intro">{% trans "Logged in as" %} </span>
+										<ul>
+											<li class="account">
+											{% if user.get_profile %}
+												<a href="{% url userena_profile_detail user.username %}">{{ user.username }}</a>
+												<ul>
+													<li><a href="{% url userena_profile_edit user.username %}">{% trans "Edit Profile" %}</a></li>
+													<li><a href="{% url userena_password_change user.username %}">{% trans "Change password" %}</a></li>
+													<li><a href="{% url userena_email_change user.username %}">{% trans "Change email" %}</a></li>
+													<li><a href="{% url userena_signout %}">{% trans "Signout" %}</a></li>
+												</ul>
+											{% else %}
+												<span>{{ user.username }}</span>
+												<ul>
+													<li><a href="{% url userena_password_change user.username %}">{% trans "Change password" %}</a></li>
+													<li><a href="{% url userena_email_change user.username %}">{% trans "Change email" %}</a></li>
+													<li><a href="{% url userena_signout %}">{% trans "Signout" %}</a></li>
+												</ul>
+											{% endif %}
+											</li>
+											<li class="messages">
+												{% get_unread_message_count_for user as unread_message_count %}
+												<a href="{% url userena_umessages_list %}">{% trans "Messages" %}</a> <span class="new">({% blocktrans %}{{ unread_message_count }} new{% endblocktrans %})</span>
+											</li>
+										</ul>
+									</div>
+								{% else %}
+									<div class="unauthenticated">
+										<ul>
+											<li><a href="{% url userena_signin %}">{% trans "Signin" %}</a></li>
+											<li><a href="{% url userena_signup %}">{% trans "Signup" %}</a></li>
+										</ul>
+									</div>
+								{% endif %}
+							{% endblock %}
+						</nav><!-- #user_menu -->
+					</div><!-- #user_menu_wrapper -->
 
 					<div id="header_menu_wrapper">
 						<nav id="header_menu">
 							{% block header_menu %}
+								<ul>
+									<li><a href="{% url userena_profile_list %}">{% trans "Profiles" %}</a></li>
+									<li><a href="#">{% trans "Photos" %}</a></li>
+									{% if user.is_authenticated %}
+									<li><a href="#">{% trans "Post a photo" %}</a></li>
+									{% endif %}
+									<li><a href="#">{% trans "Forum" %}</a></li>
+								</ul>
 							{% endblock %}
 						</nav><!-- #header_menu -->
 					</div><!-- #header_menu_wrapper -->
@@ -57,7 +114,8 @@
 
 					<section id="main">
 						<header>
-							<h1 id="maintitle">{% block maintitle %}{% endblock %}</h1><!-- #maintitle -->
+							<h1 id="maintitle">{% block maintitle %}{% endblock %}</h1>
+							<h2 id="subtitle">{% block subtitle %}{% endblock %}</h2>
 						</header>
 
 						{% block main %}{% endblock %}
@@ -91,8 +149,9 @@
 			</div><!-- #footer_wrapper_inner -->
 		</div><!-- #footer_wrapper -->
 
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 		{% block extra_js %}{% endblock %}
-		<script type="text/javascript" src="{{ settings.STATIC_URL }}js/main.js"></script>
+		<script type="text/javascript" src="{{ STATIC_URL }}js/main.js"></script>
 	
 	</div><!-- #page -->
 
