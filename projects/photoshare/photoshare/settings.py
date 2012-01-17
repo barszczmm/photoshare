@@ -228,7 +228,7 @@ USERENA_SIGNIN_REDIRECT_URL = LOGIN_REDIRECT_URL
 USERENA_DEFAULT_PRIVACY = 'open'
 
 # Boolean value that defines if userena should use the django messages framework to notify the user of any changes.
-USERENA_USE_MESSAGES = False
+USERENA_USE_MESSAGES = True
 
 
 

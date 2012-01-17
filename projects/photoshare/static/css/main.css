@@ -84,6 +84,15 @@ body { font-family: Verdana, Geneva, "DejaVu Sans", "Bitstream Vera Sans", "Libe
 a { color: #666; text-decoration: none; -webkit-transition-property: color, background; -webkit-transition-duration: 0.1s, 0.1s; -webkit-transition-timing-function: linear, linear; -moz-transition-property: color, background; -moz-transition-duration: 0.1s, 0.1s; -moz-transition-timing-function: linear, linear; -o-transition-property: color, background; -o-transition-duration: 0.1s, 0.1s; -o-transition-timing-function: linear, linear; transition-property: color, background; transition-duration: 0.1s, 0.1s; transition-timing-function: linear, linear; }
 a:hover { color: #D16F4E; }
 
+
+#app_messages { display: none; position: fixed; top: 0; left: 50%; }
+#app_messages ul { width: 980px; margin-left: -490px; position: relative; z-index: 500; border: 2px dashed #ccc; border-top: 0; background-color: #eee; overflow: hidden; }
+#app_messages .collapsed,
+#app_messages .expanded { cursor: pointer; }
+#app_messages li { border-top: 2px dashed #ccc; padding: 10px; }
+#app_messages li:first-child { border-top: 0; }
+
+
 #page { width: 980px; margin: 0 auto; }
 
 #header { overflow: hidden; border-bottom: 1px dotted #DDD; padding-bottom: 10px; padding-top: 20px; position: relative; }

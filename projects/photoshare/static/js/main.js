@@ -11,10 +11,57 @@ var animateErrors = function() {
 		}
 	);
 }
-
 animateErrors();
 
+//
+var animateAppMessages = function() {
+	var $messages = $('#app_messages ul').css({opacity: 0.8}),
+		animation = function() {
+			var height = $messages.height();
+			$('li', $messages).animate({opacity: 0}, 1500);
+			$messages.animate({width: 20, height: 20, opacity: 0.4}, 1500,
+				function() {
+					$messages.addClass('collapsed').click(
+						function() {
+							if ($messages.hasClass('collapsed')) {
+								$('li', $messages).animate({opacity: 1}, 1500);
+								$messages.removeClass('collapsed').animate({width: 980, height: height, opacity: 0.8}, 1500,
+									function() {
+										$messages.addClass('expanded');
+									}
+								);
+							} else if ($messages.hasClass('expanded')) {
+								$('li', $messages).animate({opacity: 0}, 1500);
+								$messages.removeClass('expanded').animate({width: 20, height: 20, opacity: 0.4}, 1500,
+									function() {
+										$messages.addClass('collapsed');
+									}
+								);
+							}
+						}
+					).hover(
+						function() {
+							if ($messages.hasClass('collapsed')) {
+								$messages.css({opacity: 0.8});
+							}
+						},
+						function() {
+							if ($messages.hasClass('collapsed')) {
+								$messages.css({opacity: 0.4});
+							}
+						}
+					);
+				}
+			);
+		};
+	if ($messages.length) {
+		setTimeout(animation, 2000);
+	}
+}
+
 $(document).ready(function() {
+
+	//animateAppMessages();
 
 	//
 	$('#post_comment input[type="submit"]').click(
