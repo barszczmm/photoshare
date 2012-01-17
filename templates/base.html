@@ -87,10 +87,8 @@
 							{% block header_menu %}
 								<ul>
 									<li><a href="{% url userena_profile_list %}">{% trans "Profiles" %}</a></li>
-									<li><a href="{% url photos_list %}">{% trans "Photos" %}</a></li>
-									{% if user.is_authenticated %}
-									<li><a href="{% url photos_add %}">{% trans "Post a photo" %}</a></li>
-									{% endif %}
+									<li><a href="{% url photos_list_photos %}">{% trans "Photos" %}</a></li>
+									<li><a href="{% url photos_add_photo %}">{% trans "Post a photo" %}</a></li>
 									<li><a href="#">{% trans "Forum" %}</a></li>
 								</ul>
 							{% endblock %}
