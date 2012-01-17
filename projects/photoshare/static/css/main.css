@@ -129,6 +129,8 @@ a:hover { color: #D16F4E; }
 #submenu .current a { color: #D16F4E; }
 
 
+label { font-style: italic; }
+label:after { content: ":"; }
 input,
 textarea,
 select { display: block; margin-bottom: 15px; font-family: Arial, Helmet, "Helvetica Neue", Helvetica, "Nimbus Sans L", Freesans, sans-serif; }
@@ -142,9 +144,13 @@ input[type=password]:focus,
 textarea:focus { border-color: #eee; }
 textarea { width: 580px; height: 180px; }
 select { width: 218px; }
+.checkbox { margin-bottom: 15px; }
+.checkbox label { font-style: normal; }
+.checkbox label:after { content: ""; }
+.checkbox label input { margin-bottom: 0; display: inline-block; }
 input[type=submit] { line-height: 20px; padding: 6px 12px; font-weight: bold; font-size: 12px; display: inline-block; cursor: pointer; -moz-border-radius: 3px; -webkit-border-radius: 3px; border-radius: 3px; color: #777; border: 1px solid #ddd; background: #F1F1F1 url(../img/button.png) repeat-x; }
 .errorlist { color: #CC6666; border: 1px dotted #EEBDBD; padding: 5px 15px; margin-bottom: 14px; margin-top: 16px; float: right; width: 0; overflow: hidden; white-space: nowrap; }
-.helptext { position: relative; top: -10px; }
+.helptext { position: relative; top: -12px; font-size: 10px; }
 #post_comment textarea { height: 80px; }
 
 
@@ -152,8 +158,9 @@ input[type=submit] { line-height: 20px; padding: 6px 12px; font-weight: bold; fo
 .actions a { display: inline-block; padding: 4px 6px; text-transform: uppercase; font-weight: bold; background: #bbb; color: #fff; }
 .actions a:hover { background: #D16F4E; }
 
-.tabs .tabs-titles { border-bottom: 1px dotted #DDD; margin-bottom: 10px; height: 27px; }
-.tabs .tab-title { float: left; background: #F3F3F3; border: 1px solid #F3F3F3; border-bottom: 0; margin-right: 10px; padding: 4px 10px; font-size: 12px; }
+.tabs .tabs-titles { border-bottom: 1px dotted #DDD; margin-bottom: 10px; height: 27px; font-variant: small-caps; }
+.tabs .tab-title { float: left; background: #F3F3F3; border: 1px solid #F3F3F3; border-bottom: 0; margin-right: 10px; font-size: 12px; }
+.tabs .tab-title a { display: block; padding: 4px 10px; }
 .tabs .tabs-titles .active { background: #fff; border-style: dotted; border-color: #DDD; position: relative; top: 1px; }
 .tabs .tab-content { display: none; padding-top: 15px; }
 .tabs .tabs-contents .active { display: block; }
@@ -165,9 +172,8 @@ input[type=submit] { line-height: 20px; padding: 6px 12px; font-weight: bold; fo
 #profile_list li { overflow: hidden; margin-top: 10px; }
 #profile_list img { border: 1px solid #E1E1E1; padding: 3px; float: left; width: 80px; height: 80px; }
 #profile_list .info { padding-top: 5px; margin-left: 98px; }
-#profile_list .user { font-weight: bold; }
-#profile_list .body { margin: 15px 0; }
-#profile_list .datetime { font-size: 10px; color: #ccc; }
+#profile_list .meta { margin-bottom: 5px; }
+#profile_list .username { font-weight: bold; font-variant: small-caps; font-size: 12px; }
 
 #comment_list { padding-top: 10px; }
 #comment_list li { overflow: hidden; margin-top: 10px; }
@@ -187,5 +193,13 @@ input[type=submit] { line-height: 20px; padding: 6px 12px; font-weight: bold; fo
 #message_list .last span { display: block; font-size: 11px; color: #999; }
 #message_list .new { margin-bottom: 5px; font-size: 10px; color: #ccc; }
 #message_list .datetime { font-size: 10px; color: #ccc; }
+
+#photo_list .photo { border-top: 1px dotted #DDD; }
+#photo_list .photo:first-child { border-top: 0; }
+.photo > header > h1 { font-family: 'Jockey One', Verdana, Geneva, "DejaVu Sans", "Bitstream Vera Sans", "Liberation Sans", sans-serif; color: #444; text-transform: uppercase; font-size: 22px; }
+.photo > header > h1 a { color: #444; }
+.photo > header > h1 a:hover { color: #D16F4E; }
+.photo .username { font-variant: small-caps; }
+.photo .comments:before { content: "/ "; margin: 0 0.5em; }
 
 

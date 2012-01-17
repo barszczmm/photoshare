@@ -40,7 +40,11 @@ $(document).ready(function() {
 					var $clicked = $(this);
 					if (!$clicked.hasClass('active')) {
 						$clicked.addClass('active').siblings().removeClass('active');
-						$('.tab-content:eq('+$clicked.index()+')', $tabs).addClass('active').siblings().removeClass('active');
+						if (!$tabs.hasClass('no-hash')) {
+							$('.tab-content:eq('+$clicked.index()+')', $tabs).addClass('active').siblings().removeClass('active');
+						}
+					} else {
+						return false;
 					}
 				}
 			);
