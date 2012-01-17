@@ -16,8 +16,13 @@ class Profile(UserenaBaseProfile):
         ('M', _('Male')),
         ('F', _('Female')),
     )
-    gender = models.CharField(max_length=2, choices=GENDER_CHOICES, blank=True, null=True)
-    age = models.PositiveSmallIntegerField(blank=True, null=True)
-    about = models.TextField(blank=True)
-    website = models.URLField(blank=True)
+    gender = models.CharField(_("gender"), max_length=2, choices=GENDER_CHOICES, blank=True, null=True)
+    age = models.PositiveSmallIntegerField(_("age"), blank=True, null=True)
+    about = models.TextField(_("about"), blank=True)
+    website = models.URLField(_("website"), blank=True)
+
+    @models.permalink
+    def get_absolute_url(self):
+        return ('userena_profile_detail', (), {'username': self.user.username})
+    get_absolute_url.short_description = 'url'
 
