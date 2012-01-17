@@ -20,6 +20,11 @@ class Photo(models.Model):
 
     @models.permalink
     def get_absolute_url(self):
-        return ('photos_show', (), {'photo_id': self.id})
+        return ('photos_show_photo', (), {'photo_id': self.id})
     get_absolute_url.short_description = 'url'
+
+    class Meta:
+        get_latest_by = 'uploaded'
+        ordering = ['-uploaded']
+
 
