@@ -148,6 +148,7 @@ select { width: 218px; }
 .checkbox label { font-style: normal; }
 .checkbox label:after { content: ""; }
 .checkbox label input { margin-bottom: 0; display: inline-block; }
+.confirm { margin-bottom: 15px; }
 input[type=submit] { line-height: 20px; padding: 6px 12px; font-weight: bold; font-size: 12px; display: inline-block; cursor: pointer; -moz-border-radius: 3px; -webkit-border-radius: 3px; border-radius: 3px; color: #777; border: 1px solid #ddd; background: #F1F1F1 url(../img/button.png) repeat-x; }
 .errorlist { color: #CC6666; border: 1px dotted #EEBDBD; padding: 5px 15px; margin-bottom: 14px; margin-top: 16px; float: right; width: 0; overflow: hidden; white-space: nowrap; }
 .helptext { position: relative; top: -12px; font-size: 10px; }
