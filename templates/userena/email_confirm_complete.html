@@ -3,7 +3,9 @@
 
 {% block title %}{% trans "Email changed!" %}{% endblock %}
 
-{% block content_title %}<h2>{% trans 'New email' %}</h2>{% endblock %}
-{% block content %}
-<p>{% blocktrans %}Your new email address is saved. You can continue using userena with this email.{% endblocktrans %}</p>
+{% block maintitle %}{{ user.username }}{% endblock %}
+{% block subtitle %}<span>{% trans 'New email' %}</span>{% endblock %}
+
+{% block main %}
+<p>{% blocktrans with site.name as site %}Your new email address is saved. You can continue using {{ site }} with this email.{% endblocktrans %}</p>
 {% endblock %}

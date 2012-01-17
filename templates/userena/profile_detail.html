@@ -1,42 +1,91 @@
 {% extends 'userena/base_userena.html' %}
 {% load i18n %}
+{% load comments %}
 
-{% block title %}{% blocktrans with profile.user.username as username %}{{ username }}'s profile.{% endblocktrans %}{% endblock %}
-{% block content_title %}<h2>{{ profile.user.username }} {% if profile.user.get_full_name %}({{ profile.user.get_full_name }}){% endif %}</h2>{% endblock %}
+{% block title %}{{ profile.user.username }}{% endblock %}
 
-{% block content %}
-<div class="white-box">
+{% block maintitle %}{{ profile.user.username }}{% endblock %}
 
-  {% comment %}Dirty hack. Will use django-guardian in the future.{% endcomment %}
-  {% if user.username == profile.user.username %}
-  <ul id="box-nav">
-    <li><a href="{% url userena_profile_detail user.username %}">{% trans "View profile" %} &raquo;</a></li>
-    <li><a href="{% url userena_profile_edit user.username %}">{% trans "Edit details" %} &raquo;</a></li>
-    <li><a href="{% url userena_password_change user.username %}">{% trans "Change password" %} &raquo;</a></li>
-    <li><a href="{% url userena_email_change user.username %}">{% trans "Change email" %} &raquo;</a></li>
-  </ul>
-  {% endif %}
-
-  <div id="details">
-    <img src="{{ profile.get_mugshot_url }}" alt="{% trans "Your mugshot" %}" />
-    {% if profile.user.get_full_name %}
-    <p><strong>{% trans "Name" %}</strong><br /> {{ profile.user.get_full_name }}</p>
-    {% endif %}
-    {% if profile.user.email %}
-    <p><strong>{% trans "Email" %}</strong><br />{{ profile.user.email }}</p>
-    {% endif %}
-    {% if profile.age %}
-    <p><strong>{% trans "Age" %}</strong><br /> {{ profile.age }}</p>
-    {% endif %}
-    {% if profile.website %}
-    <p><strong>{% trans "Website" %}</strong><br /> <a href="{{ profile.website }}">{{ profile.website }}</a></p>
-    {% endif %}
-    {% if profile.location %}
-    <p><strong>{% trans "Location" %}</strong><br />{{ profile.location }}</p>
-    {% endif %}
-    {% if profile.about_me %}
-    <p><strong>{% trans "About me" %}</strong><br />{{ profile.about_me }}</p>
-    {% endif %}
-  </div>
+{% block main %}
+<div class="actions">
+	<a href="{% url userena_umessages_compose_to user.username %}">{% trans "Send message" %}</a>
 </div>
+
+<div class="tabs">
+
+	<ul class="tabs-titles">
+		<li class="tab-title active"><a href="#info">{% trans "Info" %}</a></li>
+		<li class="tab-title"><a href="#photos">{% trans "Photos" %}</a></li>
+		<li class="tab-title"><a href="#comments">{% trans "Comments" %}</a></li>
+	</ul>
+
+	<div class="tabs-contents">
+	
+		<div class="tab-content active">
+			<div id="profile">
+				<img src="{{ profile.get_mugshot_url }}" alt="{% trans "Your mugshot" %}" />
+				<div class="info">
+				{% if profile.user.get_full_name %}
+					<p><strong>{% trans "Name" %}</strong><br /> {{ profile.user.get_full_name }}</p>
+				{% endif %}
+				{% if profile.user.email %}
+					<p><strong>{% trans "Email" %}</strong><br />{{ profile.user.email }}</p>
+				{% endif %}
+				{% if profile.age %}
+					<p><strong>{% trans "Age" %}</strong><br /> {{ profile.age }}</p>
+				{% endif %}
+				{% if profile.website %}
+					<p><strong>{% trans "Website" %}</strong><br /> <a href="{{ profile.website }}">{{ profile.website }}</a></p>
+				{% endif %}
+				{% if profile.location %}
+					<p><strong>{% trans "Location" %}</strong><br />{{ profile.location }}</p>
+				{% endif %}
+				{% if profile.about %}
+					<p><strong>{% trans "About me" %}</strong><br />{{ profile.about }}</p>
+				{% endif %}
+				</div>
+			</div>
+		</div>
+
+		<div class="tab-content">
+			photos
+		</div>
+
+		<div class="tab-content">
+			{% if user.get_profile %}
+				{% get_comment_form for profile as form %}
+				<form action="{% comment_form_target %}" method="post" id="post_comment">
+					{% csrf_token %}
+					<fieldset>
+						{% for hidden in form.hidden_fields %}
+							{{ hidden }}
+						{% endfor %}
+						<p>
+							<label for="id_comment">{% trans "Add comment" %}</label>
+							{{ form.comment }}
+						</p>
+					</fieldset>
+					<input type="submit" name="submit" value="{% trans "Submit" %}" />
+				</form>
+			{% endif %}
+
+			{% get_comment_list for profile as comment_list %}
+			<ul id="comment_list">
+			{% for comment in comment_list %}
+				<li class="comment {% if comment.user == user %} by-me{% endif %}{% if comment.user == profile.user %} by-user{% endif %}">
+					<a href="{% url userena_profile_detail comment.user.username %}" title="{{ comment.user.username }}">
+						<img src="{{ comment.user.get_profile.get_mugshot_url }}" alt="{{ comment.user.username }}" title="{{ comment.user.username }}" />
+					</a>
+					<div class="info">
+						<a class="user" href="{% url userena_profile_detail comment.user.username %}">{{ comment.user.username }}</a>
+						<p class="body">{{ comment.comment }}</p>
+						<time class="datetime" datetime="{{ comment.submit_date }}">{{ comment.submit_date }}</time>
+					</div>
+				</li>
+			{% endfor %}
+			</ul>
+		</div>
+
+	</div><!-- .tabs-contents -->
+
 {% endblock %}
