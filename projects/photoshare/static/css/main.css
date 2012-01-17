@@ -173,16 +173,19 @@ input[type=submit] { line-height: 20px; padding: 6px 12px; font-weight: bold; fo
 #comment_list li { overflow: hidden; margin-top: 10px; }
 #comment_list img { border: 1px solid #E1E1E1; padding: 3px; float: left; width: 80px; height: 80px; }
 #comment_list .info { padding-top: 5px; margin-left: 98px; }
-#comment_list .user { font-weight: bold; }
-#comment_list .body { margin: 15px 0; }
+#comment_list .meta { margin-bottom: 5px; }
+#comment_list .username { font-weight: bold; font-variant: small-caps; font-size: 12px; }
 #comment_list .datetime { font-size: 10px; color: #ccc; }
 
 #message_list li { overflow: hidden; margin-top: 10px; }
 #message_list img { border: 1px solid #E1E1E1; padding: 3px; float: left; width: 80px; height: 80px; }
 #message_list .info { padding-top: 5px; margin-left: 98px; }
-#message_list .user span { font-weight: bold; }
-#message_list .body { margin: 15px 0; }
-#message_list .new,
+#message_list .meta { margin-bottom: 5px; }
+#message_list .meta a { font-variant: small-caps; font-size: 12px; }
+#message_list .username { font-weight: bold; }
+#message_list .last { font-size: 10px; color: #ccc; }
+#message_list .last span { display: block; font-size: 11px; color: #999; }
+#message_list .new { margin-bottom: 5px; font-size: 10px; color: #ccc; }
 #message_list .datetime { font-size: 10px; color: #ccc; }
 
 

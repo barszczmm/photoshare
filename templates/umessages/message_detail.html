@@ -18,8 +18,8 @@
 			<img src="{{ message.sender.get_profile.get_mugshot_url }}" alt="{{ message.sender.username }}" title="{{ message.sender.username }}" />
 		</a>
 		<div class="info">
-			<p class="body">{{ message|linebreaksbr }}</p>
-			<time class="datetime" datetime="{{ message.sent_at }}">{{ message.sent_at }}</time>
+			<p class="meta"><a class="username" href="{% url userena_profile_detail message.sender.username %}">{{ message.sender.username }}</a> <time class="datetime" datetime="{{ message.sent_at }}">({{ message.sent_at }})</time></p>
+			<p class="body">{{ message.body|linebreaksbr }}</p>
 		</div><!-- .info -->
 	</li>
 {% endfor %}

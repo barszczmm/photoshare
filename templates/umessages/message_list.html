@@ -15,18 +15,18 @@
 			<img src="{{ message.to_user.get_profile.get_mugshot_url }}" alt="{{ message.to_user.username }}" title="{{ message.to_user.username }}" />
 		</a>
 		<div class="info">
-			<p class="user"><a href="{% url userena_umessages_detail message.to_user.username %}">{% blocktrans with message.to_user as recipient %}Conversation with <span>{{ recipient }}</span>{% endblocktrans %}</a></p>
+			<p class="meta"><a href="{% url userena_umessages_detail message.to_user.username %}">{% blocktrans with message.to_user as recipient %}Conversation with <span class="username">{{ recipient }}</span>{% endblocktrans %}</a></p>
 			{% get_unread_message_count_between user and message.to_user as unread_between_count %}
 	{% else %}
 		<a href="{% url userena_profile_detail message.from_user.username %}" title="{{ message.from_user.username }}">
 			<img src="{{ message.from_user.get_profile.get_mugshot_url }}" alt="{{ message.from_user.username }}" title="{{ message.from_user.username }}" />
 		</a>
 		<div class="info">
-			<p class="user"><a href="{% url userena_umessages_detail message.from_user.username %}">{% blocktrans with message.from_user as recipient %}Conversation with <span>{{ recipient }}</span>{% endblocktrans %}</a>
+			<p class="meta"><a href="{% url userena_umessages_detail message.from_user.username %}">{% blocktrans with message.from_user as recipient %}Conversation with <span class="username">{{ recipient }}</span>{% endblocktrans %}</a>
 			{% get_unread_message_count_between user and message.from_user as unread_between_count %}
 	{% endif %}
-			<p class="body">{{ message.latest_message|linebreaksbr }}</p>
-			<p class="new">{% blocktrans %}{{ unread_between_count }} new messages{% endblocktrans %}
+			<p class="new">{% blocktrans %}{{ unread_between_count }} new messages{% endblocktrans %}</p>
+			<p class="last">{% blocktrans with message.latest_message as latest_message and message.latest_message.sent_at as latest_message_at %}Last message <time class="datetime" datetime="{{ latest_message_at }}">({{ latest_message_at }})</time>: <span>{{ latest_message }}</span>{% endblocktrans %}</p>
 		</div><!-- .info -->
 	</li>
 	{% endfor %}

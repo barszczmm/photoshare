@@ -41,7 +41,7 @@
 					<p><strong>{% trans "Location" %}</strong><br />{{ profile.location }}</p>
 				{% endif %}
 				{% if profile.about %}
-					<p><strong>{% trans "About me" %}</strong><br />{{ profile.about }}</p>
+					<p><strong>{% trans "About me" %}</strong><br />{{ profile.about|linebreaksbr }}</p>
 				{% endif %}
 				</div>
 			</div>
@@ -77,9 +77,8 @@
 						<img src="{{ comment.user.get_profile.get_mugshot_url }}" alt="{{ comment.user.username }}" title="{{ comment.user.username }}" />
 					</a>
 					<div class="info">
-						<a class="user" href="{% url userena_profile_detail comment.user.username %}">{{ comment.user.username }}</a>
-						<p class="body">{{ comment.comment }}</p>
-						<time class="datetime" datetime="{{ comment.submit_date }}">{{ comment.submit_date }}</time>
+						<p class="meta"><a class="username" href="{% url userena_profile_detail comment.user.username %}">{{ comment.user.username }}</a> <time class="datetime" datetime="{{ comment.submit_date }}">({{ comment.submit_date }})</time></p>
+						<p class="body">{{ comment.comment|linebreaksbr }}</p>
 					</div>
 				</li>
 			{% endfor %}
