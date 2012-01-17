@@ -195,9 +195,9 @@ LOGGING = {
     }
 }
 
-LOGIN_URL = '/accounts/signin/'
-LOGOUT_URL = '/accounts/signout/'
-LOGIN_REDIRECT_URL = '/accounts/%(username)s/'
+LOGIN_URL = '/users/signin/'
+LOGOUT_URL = '/users/signout/'
+LOGIN_REDIRECT_URL = '/users/%(username)s/'
 AUTH_PROFILE_MODULE = 'profiles.Profile'
 
 AUTHENTICATION_BACKENDS = (
@@ -206,12 +206,37 @@ AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',
 )
 
-### django-guardian
+
+
+### django-guardian ###
 ANONYMOUS_USER_ID = -1
 
-### userena
+
+
+### userena ###
+
 # Defines if usernames are used within userena. Currently it’s often for the users convenience that only an email is used for identification. With this setting you get just that.
 USERENA_WITHOUT_USERNAMES = False
 
+# A string which defines the URI where the user will be redirected to after signin.
+USERENA_SIGNIN_REDIRECT_URL = LOGIN_REDIRECT_URL
 
+# Defines the default privacy value for a newly registered user. There are three options:
+# closed - Only the owner of the profile can view their profile.
+# registered - All registered users can view their profile.
+# open - All users (registered and anonymous) can view their profile.
+USERENA_DEFAULT_PRIVACY = 'open'
+
+# Boolean value that defines if userena should use the django messages framework to notify the user of any changes.
+USERENA_USE_MESSAGES = False
+
+
+
+### my custom settings ###
+
+# slogan used under site title in header
 SLOGAN = u"Tu jakiś przykładowy slogan"
+
+# separator used in title between "path" elements
+TITLE_SEPARATOR = ' / '
+
