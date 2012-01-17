@@ -1,12 +1,18 @@
-{% extends 'userena/base_userena.html' %}
+{% extends 'userena/profile_form.html' %}
 {% load i18n %}
 
-{% block title %}{% trans "Email verification" %}{% endblock %}
+{% block titlepart %}{% trans "Email verification" %}{% endblock %}
 
-{% block maintitle %}{{ user.username }}{% endblock %}
-{% block subtitle %}<span>{% trans 'Confirm your new email' %}</span>{% endblock %}
+{% block subtitle %}<span>{% trans "Email verification" %}</span>{% endblock %}
 
-{% block main %}
+
+{% block tabs_titles %}
+<li class="tab-title"><a href="{% url userena_profile_edit user.username %}">{% trans "Edit Profile" %}</a></li>
+<li class="tab-title"><a href="{% url userena_password_change user.username %}">{% trans "Change password" %}</a></li>
+<li class="tab-title active"><a href="{% url userena_email_change user.username %}">{% trans "Change email" %}</a></li>
+{% endblock %}
+
+{% block tab_content %}
 <p>{% blocktrans with viewed_user.userena_signup.email_unconfirmed as email %}You have received an email at {{ email }}.{% endblocktrans %}</p>
 <p>{% blocktrans with viewed_user.username as username %}To associate this email address with your account ({{ username }}) click on the link provided in this email.{% endblocktrans %}</p>
 {% endblock %}

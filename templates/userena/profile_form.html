@@ -1,9 +1,9 @@
 {% extends 'userena/base_userena.html' %}
 {% load i18n %}
 
-{% block title %}{% trans "Edit Profile" %}{% endblock %}
+{% block title %}{% trans "Users" %}{{ settings.TITLE_SEPARATOR }}{{ user.username }}{{ settings.TITLE_SEPARATOR }}{% block titlepart %}{% trans "Edit Profile" %}{% endblock %}{% endblock %}
 
-{% block maintitle %}<a href="{{ user.get_profile.get_absolute_url }}">{{ user.username }}</a>{% endblock %}
+{% block maintitle %}<a href="{% url userena_profile_list %}">{% trans "Users" %}</a> / <a href="{{ user.get_profile.get_absolute_url }}">{{ user.username }}</a>{% endblock %}
 {% block subtitle %}<span>{% trans "Edit Profile" %}</span>{% endblock %}
 
 {% block main %}

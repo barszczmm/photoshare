@@ -1,7 +1,7 @@
 {% extends 'umessages/base_message.html' %}
 {% load i18n %}
 
-{% block title %}{% blocktrans %}Conversation with {{ recipient }}{% endblocktrans %}{% endblock %}
+{% block title %}{% trans "Messages" %}{{ settings.TITLE_SEPARATOR }}{% blocktrans %}Conversation with {{ recipient }}{% endblocktrans %}{% endblock %}
 
 {% block maintitle %}<a href="{% url userena_umessages_list %}">{% trans "Messages" %}</a> / <a href="{% url userena_umessages_detail recipient %}">{% blocktrans %}Conversation with {{ recipient }}{% endblocktrans %}</a>{% endblock %}
 

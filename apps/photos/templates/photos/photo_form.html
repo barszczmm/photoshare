@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% load i18n %}
 
-{% block title %}{% trans "Add photo" %}{% endblock %}
+{% block title %}{% trans "Photos" %}{{ settings.TITLE_SEPARATOR }}{% trans "Post a photo" %}{% endblock %}
 
 {% block maintitle %}<a href="{% url photos_list_photos %}">{% trans "Photos" %}</a>{% endblock %}
 {% block subtitle %}<span>{% trans "Post a photo" %}</span>{% endblock %}

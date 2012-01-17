@@ -1,41 +1,45 @@
 {% extends 'userena/base_userena.html' %}
 {% load i18n %}
 
-{% block title %}{% trans "Profiles" %}{% endblock %}
+{% block title %}{% trans "Users" %}{% endblock %}
 
-{% block maintitle %}{% trans "Profiles" %}{% endblock %}
+{% block maintitle %}<a href="{% url userena_profile_list %}">{% trans "Users" %}</a>{% endblock %}
 
 {% block main %}
-<ul id="profile_list">
-	{% for profile in profile_list %}
-	<li class="profile">
-		<a href="{{ profile.get_absolute_url }}" title="{{ profile.user.username }}">
-			<img src="{{ profile.get_mugshot_url }}" alt="{{ profile.user.username }}" title="{{ profile.user.username }}" />
-		</a>
-		<div class="info">
-			<p class="meta"><a class="username" href="{{ profile.get_absolute_url }}">{{ profile.user.username }}</a></p>
+<div class="tabs">
+
+	<ul class="tabs-titles">
+		<li class="tab-title active"><a href="#new">{% trans "New" %}</a></li>
+		<li class="tab-title"><a href="#top">{% trans "Top" %}</a></li>
+		<li class="tab-title"><a href="#hot">{% trans "Hot" %}</a></li>
+	</ul>
+
+	<div class="tabs-contents">
+
+		<div class="tab-content active">
+			<ul id="profile_list">
+				{% for profile in profile_list %}
+				<li class="profile">
+					<a href="{{ profile.get_absolute_url }}" title="{{ profile.user.username }}">
+						<img src="{{ profile.get_mugshot_url }}" alt="{{ profile.user.username }}" title="{{ profile.user.username }}" />
+					</a>
+					<div class="info">
+						<p class="meta"><a class="username" href="{{ profile.get_absolute_url }}">{{ profile.user.username }}</a></p>
+					</div>
+				</li>
+				{% endfor %}
+			</ul>
 		</div>
-	</li>
-	{% endfor %}
-</ul>
 
-{% if is_paginated %}
-<div class="pagination">
-	<span class="step-links">
-		{% if page_obj.has_previous %}
-		<a href="{% url userena_profile_list_paginated page_obj.previous_page_number %}">{% trans 'previous' %}</a>
-		{% endif %}
+		<div class="tab-content">
+			top
+		</div>
 
-		<span class="current">
-		{% blocktrans with page_obj.number as page and page_obj.paginator.num_pages as num_pages %}
-		Page {{ page }} of {{ num_pages }}
-		{% endblocktrans %}
-		</span>
+		<div class="tab-content">
+			hot
+		</div>
 
-		{% if page_obj.has_next %}
-		<a href="{% url userena_profile_list_paginated  page_obj.next_page_number %}">{% trans 'next' %}</a>
-		{% endif %}
-	</span>
+	</div>
+
 </div>
-{% endif %}
 {% endblock %}

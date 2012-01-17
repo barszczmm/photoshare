@@ -1,29 +1,31 @@
-{% extends 'userena/profile_detail.html' %}
+{% extends 'photos/photo_detail.html' %}
 {% load i18n comments %}
 
-{% block titlepart %}{{ settings.TITLE_SEPARATOR }}{% trans "Comments" %}{% endblock %}
+{% block title %}{% trans "Photos" %}{{ settings.TITLE_SEPARATOR }}{% blocktrans with photo.title as photo_title and photo.user.username as username %}{{ photo_title }} by {{ username }}{% endblocktrans %}{{ settings.TITLE_SEPARATOR }}{% trans "Comments" %}{% endblock %}
 
 {% block subtitle %}<span>{% trans "Comments" %}</span>{% endblock %}
 
 
 {% block tabs_titles %}
-<li class="tab-title"><a href="{{ profile.get_absolute_url }}">{% trans "Info" %}</a></li>
-<li class="tab-title"><a href="{% url profile_photos profile.user.username %}">{% trans "Photos" %}</a></li>
-<li class="tab-title active"><a href="{% url profile_comments profile.user.username %}">{% trans "Comments" %}</a></li>
+<li class="tab-title"><a href="{{ photo.get_absolute_url }}">{% trans "Info" %}</a></li>
+<li class="tab-title active"><a href="{% url photos_comments_photo photo.id %}">{% trans "Comments" %}</a></li>
+{% if photo.user == user %}
+	<li class="tab-title"><a href="{% url photos_edit_photo photo.id %}">{% trans "Edit photo" %}</a></li>
+	<li class="tab-title"><a href="{% url photos_remove_photo photo.id %}">{% trans "Delete photo" %}</a></li>
+{% endif %}
 {% endblock %}
-
 
 {% block tab_content %}
 
 	{% if user.get_profile %}
-		{% get_comment_form for profile as form %}
+		{% get_comment_form for photo as form %}
 		<form action="{% comment_form_target %}" method="post" id="post_comment">
 			{% csrf_token %}
 			<fieldset>
 				{% for hidden in form.hidden_fields %}
 					{{ hidden }}
 				{% endfor %}
-				<input type="hidden" name="next" value="{% url profile_comments profile.user.username %}" />
+				<input type="hidden" name="next" value="{% url photos_comments_photo photo.id %}" />
 				<p>
 					<label for="id_comment">{% trans "Add comment" %}</label>
 					{{ form.comment }}
@@ -33,7 +35,7 @@
 		</form>
 	{% endif %}
 
-	{% get_comment_list for profile as comment_list %}
+	{% get_comment_list for photo as comment_list %}
 	<ul id="comment_list">
 	{% for comment in comment_list reversed %}
 		<li class="comment {% if comment.user == user %} by-me{% endif %}{% if comment.user == profile.user %} by-user{% endif %}">

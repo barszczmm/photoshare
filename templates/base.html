@@ -29,6 +29,10 @@
 	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
 	<![endif]-->
 
+	<script type="text/javascript">
+		var field_required_error = '{% trans "This field is required." %}';
+	</script>
+
 	<title>{% block title %}{% endblock %} | {{ site.name }}</title>
 </head>
 <body id="{% block body_id %}{% endblock %}" class="{% block body_class %}{% endblock %}">
@@ -86,7 +90,7 @@
 						<nav id="header_menu">
 							{% block header_menu %}
 								<ul>
-									<li><a href="{% url userena_profile_list %}">{% trans "Profiles" %}</a></li>
+									<li><a href="{% url userena_profile_list %}">{% trans "Users" %}</a></li>
 									<li><a href="{% url photos_list_photos %}">{% trans "Photos" %}</a></li>
 									<li><a href="{% url photos_add_photo %}">{% trans "Post a photo" %}</a></li>
 									<li><a href="#">{% trans "Forum" %}</a></li>

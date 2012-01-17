@@ -1,6 +1,8 @@
 {% extends 'userena/profile_detail.html' %}
 {% load i18n comments %}
 
+{% block titlepart %}{{ settings.TITLE_SEPARATOR }}{% trans "Photos" %}{% endblock %}
+
 {% block subtitle %}<span>{% trans "Photos" %}</span>{% endblock %}
 
 {% block tabs_titles %}

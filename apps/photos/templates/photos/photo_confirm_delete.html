@@ -1,14 +1,14 @@
 {% extends 'photos/photo_detail.html' %}
 {% load i18n %}
 
-{% block title %}{% trans "Delete photo" %}{% endblock %}
+{% block title %}{% trans "Photos" %}{{ settings.TITLE_SEPARATOR }}{% blocktrans with photo.title as photo_title and photo.user.username as username %}{{ photo_title }} by {{ username }}{% endblocktrans %}{{ settings.TITLE_SEPARATOR }}{% trans "Delete" %}{% endblock %}
 
 {% block subtitle %}<span>{% trans "Delete photo" %}</span>{% endblock %}
 
 
 {% block tabs_titles %}
 <li class="tab-title"><a href="{{ photo.get_absolute_url }}">{% trans "Info" %}</a></li>
-<li class="tab-title"><a href="#">{% trans "Comments" %}</a></li>
+<li class="tab-title"><a href="{% url photos_comments_photo photo.id %}">{% trans "Comments" %}</a></li>
 {% if photo.user == user %}
 	<li class="tab-title"><a href="{% url photos_edit_photo photo.id %}">{% trans "Edit photo" %}</a></li>
 	<li class="tab-title active"><a href="{% url photos_remove_photo photo.id %}">{% trans "Delete photo" %}</a></li>

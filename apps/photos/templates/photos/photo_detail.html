@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% load i18n comments %}
 
-{% block title %}{% blocktrans with photo.title as photo_title and photo.user.username as username %}{{ photo_title }} by {{ username }}{% endblocktrans %}{% endblock %}
+{% block title %}{% trans "Photos" %}{{ settings.TITLE_SEPARATOR }}{% blocktrans with photo.title as photo_title and photo.user.username as username %}{{ photo_title }} by {{ username }}{% endblocktrans %}{% endblock %}
 
 {% block maintitle %}<a href="{% url photos_list_photos %}">{% trans "Photos" %}</a> / {% blocktrans with photo.title as photo_title and photo.get_absolute_url as photo_url and photo.user.username as username and photo.user.get_profile.get_absolute_url as user_url %}<a href="{{ photo_url }}">{{ photo_title }}</a> by <a href="{{ user_url }}">{{ username }}</a>{% endblocktrans %}{% endblock %}
 {% block subtitle %}<span>{% trans "Info" %}</span>{% endblock %}
@@ -12,7 +12,7 @@
 	<ul class="tabs-titles">
 		{% block tabs_titles %}
 		<li class="tab-title active"><a href="{{ photo.get_absolute_url }}">{% trans "Info" %}</a></li>
-		<li class="tab-title"><a href="#">{% trans "Comments" %}</a></li>
+		<li class="tab-title"><a href="{% url photos_comments_photo photo.id %}">{% trans "Comments" %}</a></li>
 		{% if photo.user == user %}
 			<li class="tab-title"><a href="{% url photos_edit_photo photo.id %}">{% trans "Edit photo" %}</a></li>
 			<li class="tab-title"><a href="{% url photos_remove_photo photo.id %}">{% trans "Delete photo" %}</a></li>
