@@ -3,11 +3,6 @@
 import os
 import sys
 
-# TODO: remove this in production
-import warnings
-warnings.filterwarnings('error', r"DateTimeField received a naive datetime", RuntimeWarning, r'django\.db\.models\.fields')
-
-
 
 PROJECT_ROOT = os.path.dirname(__file__)
 
@@ -15,7 +10,7 @@ PROJECT_ROOT = os.path.dirname(__file__)
 sys.path.insert(0, os.path.join(PROJECT_ROOT, "../../../apps"))
 sys.path.insert(0, os.path.join(PROJECT_ROOT, "../../../apps_ext/django-userena"))
 
-DEBUG = True
+DEBUG = False
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
@@ -28,8 +23,8 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
         'NAME': 'photoshare',                      # Or path to database file if using sqlite3.
-        'USER': 'root',                      # Not used with sqlite3.
-        'PASSWORD': 'a',                  # Not used with sqlite3.
+        'USER': 'photoshare',                      # Not used with sqlite3.
+        'PASSWORD': 'bvf9Rhjftyuu765rty',                  # Not used with sqlite3.
         'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
         'PORT': '',                      # Set to empty string for default. Not used with sqlite3.
     }
@@ -169,7 +164,23 @@ INSTALLED_APPS = (
     'photos',
 )
 
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+### email settings ###
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+#EMAIL_HOST = ''
+#EMAIL_HOST_PASSWORD = ''
+#EMAIL_HOST_USER = ''
+#EMAIL_PORT = 25
+#EMAIL_USE_TLS = False
+# Default email address to use for various automated correspondence from the site manager(s).
+DEFAULT_FROM_EMAIL = 'admin@barszcz.info'
+# The email address that error messages come from, such as those sent to ADMINS and MANAGERS.
+#SERVER_EMAIL = ''
+EMAIL_SUBJECT_PREFIX = '[photoshare] '
+# Whether to send an email to the MANAGERS each time somebody visits a Django-powered page
+# that is 404ed with a non-empty referer (i.e., a broken link).
+SEND_BROKEN_LINK_EMAILS = True
+
 
 # A sample logging configuration. The only tangible logging
 # performed by this configuration is to send an email to
@@ -244,4 +255,13 @@ SLOGAN = u"Tu jakiś przykładowy slogan"
 
 # separator used in title between "path" elements
 TITLE_SEPARATOR = ' / '
+
+
+
+
+
+# override settings if FLAVOUR env variable is set
+FLAVOUR = os.environ.get('FLAVOUR', None)
+if FLAVOUR == 'dev':
+    from settings_dev import *
 
