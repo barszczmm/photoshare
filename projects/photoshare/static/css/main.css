@@ -142,7 +142,7 @@ textarea { border: 1px solid #E1E1E1; color: #666; padding: 6px 8px; width: 200p
 input[type=text]:focus,
 input[type=password]:focus,
 textarea:focus { border-color: #eee; }
-textarea { width: 580px; height: 180px; }
+textarea { width: 580px; height: 84px; }
 select { width: 218px; }
 .checkbox { margin-bottom: 15px; }
 .checkbox label { font-style: normal; }
@@ -152,7 +152,6 @@ select { width: 218px; }
 input[type=submit] { line-height: 20px; padding: 6px 12px; font-weight: bold; font-size: 12px; display: inline-block; cursor: pointer; -moz-border-radius: 3px; -webkit-border-radius: 3px; border-radius: 3px; color: #777; border: 1px solid #ddd; background: #F1F1F1 url(../img/button.png) repeat-x; }
 .errorlist { color: #CC6666; border: 1px dotted #EEBDBD; padding: 5px 15px; margin-bottom: 14px; margin-top: 16px; float: right; width: 0; overflow: hidden; white-space: nowrap; }
 .helptext { position: relative; top: -12px; font-size: 10px; }
-#post_comment textarea { height: 80px; }
 
 
 .actions { border-bottom: 1px dotted #DDD; margin: -20px 0 20px; padding: 2px; }
@@ -174,7 +173,8 @@ input[type=submit] { line-height: 20px; padding: 6px 12px; font-weight: bold; fo
 #profile_list img { border: 1px solid #E1E1E1; padding: 3px; float: left; width: 80px; height: 80px; }
 #profile_list .info { padding-top: 5px; margin-left: 98px; }
 #profile_list .meta { margin-bottom: 5px; }
-#profile_list .username { font-weight: bold; font-variant: small-caps; font-size: 12px; }
+#profile_list .username { font-family: 'Jockey One', Verdana, Geneva, "DejaVu Sans", "Bitstream Vera Sans", "Liberation Sans", sans-serif; color: #444; text-transform: uppercase; font-size: 22px; }
+#profile_list .username:hover { color: #D16F4E; }
 
 #comment_list { padding-top: 10px; }
 #comment_list li { overflow: hidden; margin-top: 10px; }
