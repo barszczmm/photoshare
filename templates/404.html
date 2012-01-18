@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% load i18n  %}
+
+{% block title %}{% trans "Page not found" %}{% endblock %}
+
+{% block maintitle %}{% trans "Error 404" %}{% endblock %}
+{% block subtitle %}<span>{% trans "Page not found" %}</span>{% endblock %}
+
+{% block main %}
+<p>{% trans "Unfortunately page you were looking for was not found." %}</p>
+{% endblock %}
