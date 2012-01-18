@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-01-17 22:20+0100\n"
-"PO-Revision-Date: 2012-01-17 22:26+0100\n"
+"POT-Creation-Date: 2012-01-18 05:15+0100\n"
+"PO-Revision-Date: 2012-01-18 05:27+0100\n"
 "Last-Translator: Maciej Marczewski <maciej@marczewski.net.pl>\n"
 "Language-Team: Polish <kde-i18n-doc@kde.org>\n"
 "MIME-Version: 1.0\n"
@@ -34,24 +34,6 @@ msgid "uploaded at"
 msgstr "wgrano dnia"
 
 #: templates/photos/photo_comments.html:4
-#: templates/photos/photo_confirm_delete.html:4
-#: templates/photos/photo_detail.html:4 templates/photos/photo_detail.html:6
-#: templates/photos/photo_form.html:4 templates/photos/photo_form.html.py:6
-#: templates/photos/photo_form_edit.html:4 templates/photos/photo_list.html:4
-#: templates/photos/photo_list.html.py:6 templates/photos/user_photos.html:4
-#: templates/photos/user_photos.html:6 templates/photos/user_photos.html:10
-msgid "Photos"
-msgstr "Zdjęcia"
-
-#: templates/photos/photo_comments.html:4
-#: templates/photos/photo_confirm_delete.html:4
-#: templates/photos/photo_detail.html:4
-#: templates/photos/photo_form_edit.html:4
-#, python-format
-msgid "%(photo_title)s by %(username)s"
-msgstr "%(photo_title)s przez %(username)s"
-
-#: templates/photos/photo_comments.html:4
 #: templates/photos/photo_comments.html:6
 #: templates/photos/photo_comments.html:11
 #: templates/photos/photo_confirm_delete.html:11
@@ -72,13 +54,11 @@ msgstr ""
 #: templates/photos/photo_comments.html:13
 #: templates/photos/photo_confirm_delete.html:13
 #: templates/photos/photo_detail.html:17
-#: templates/photos/photo_form_edit.html:6
 #: templates/photos/photo_form_edit.html:13
 msgid "Edit photo"
 msgstr "Edytuj zdjęcie"
 
 #: templates/photos/photo_comments.html:14
-#: templates/photos/photo_confirm_delete.html:6
 #: templates/photos/photo_confirm_delete.html:14
 #: templates/photos/photo_confirm_delete.html:24
 #: templates/photos/photo_detail.html:18
@@ -95,6 +75,7 @@ msgid "Submit"
 msgstr "Wyślij"
 
 #: templates/photos/photo_confirm_delete.html:4
+#: templates/photos/photo_confirm_delete.html:6
 msgid "Delete"
 msgstr "Usuń"
 
@@ -102,15 +83,22 @@ msgstr "Usuń"
 msgid "Are you sure you want to delete this photo?"
 msgstr "Czy na pewno chcesz usunąć to zdjęcie?"
 
-#: templates/photos/photo_detail.html:6
+#: templates/photos/photo_detail.html:4 templates/photos/photo_detail.html:6
+#: templates/photos/photo_form.html:4 templates/photos/photo_form.html.py:6
+#: templates/photos/photo_list.html:4 templates/photos/photo_list.html.py:6
+#: templates/photos/user_photos.html:4 templates/photos/user_photos.html:6
+#: templates/photos/user_photos.html:10
+msgid "Photos"
+msgstr "Zdjęcia"
+
+#: templates/photos/photo_detail.html:4
 #, python-format
-msgid ""
-"<a href=\"%(photo_url)s\">%(photo_title)s</a> by <a href=\"%(user_url)s\">%"
-"(username)s</a>"
-msgstr ""
-"<a href=\"%(photo_url)s\">%(photo_title)s</a> przez <a href=\"%(user_url)s\">"
-"%"
-"(username)s</a>"
+msgid "%(photo_title)s by %(username)s"
+msgstr "%(photo_title)s przez %(username)s"
+
+#: templates/photos/photo_detail.html:6 templates/photos/photo_list.html:25
+msgid "by"
+msgstr "przez"
 
 #: templates/photos/photo_detail.html:31
 #, python-format
@@ -120,8 +108,7 @@ msgid ""
 "\t\t\t\t\t\t"
 msgstr ""
 "Dodane przez <a class=\"username\" href=\"%(user_url)s\">%(username)s</a> "
-"dnia "
-"<time class=\"datetime\" datetime=\"%(added_at)s\">%(added_at)s</time>\n"
+"dnia <time class=\"datetime\" datetime=\"%(added_at)s\">%(added_at)s</time>\n"
 "\t\t\t\t\t\t"
 
 #: templates/photos/photo_detail.html:33 templates/photos/photo_list.html:32
@@ -140,6 +127,7 @@ msgid "Save"
 msgstr "Zapisz"
 
 #: templates/photos/photo_form_edit.html:4
+#: templates/photos/photo_form_edit.html:6
 msgid "Edit"
 msgstr "Edytuj"
 
@@ -163,8 +151,7 @@ msgid ""
 "\t\t\t\t\t\t\t"
 msgstr ""
 "Dodane przez <a class=\"username\" href=\"%(user_url)s\">%(username)s</a> "
-"dnia "
-"<time class=\"datetime\" datetime=\"%(added_at)s\">%(added_at)s</time>\n"
+"dnia <time class=\"datetime\" datetime=\"%(added_at)s\">%(added_at)s</time>\n"
 "\t\t\t\t\t\t\t"
 
 #: templates/photos/user_photos.html:26
@@ -175,7 +162,12 @@ msgid ""
 "\t\t\t\t\t"
 msgstr ""
 "Dodane przez <a class=\"username\" href=\"%(user_url)s\">%(username)s</a> "
-"dnia "
-"<time class=\"datetime\" datetime=\"%(added_at)s\">%(added_at)s</time>\n"
+"dnia <time class=\"datetime\" datetime=\"%(added_at)s\">%(added_at)s</time>\n"
 "\t\t\t\t\t"
 
+#~ msgid ""
+#~ "<a href=\"%(photo_url)s\">%(photo_title)s</a> by <a href=\"%(user_url)s\">"
+#~ "%(username)s</a>"
+#~ msgstr ""
+#~ "<a href=\"%(photo_url)s\">%(photo_title)s</a> przez <a href=\"%(user_url)s"
+#~ "\">%(username)s</a>"

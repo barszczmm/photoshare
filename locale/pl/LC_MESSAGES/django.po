@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-01-17 22:18+0100\n"
-"PO-Revision-Date: 2012-01-17 22:58+0100\n"
+"POT-Creation-Date: 2012-01-18 05:14+0100\n"
+"PO-Revision-Date: 2012-01-18 05:25+0100\n"
 "Last-Translator: Maciej Marczewski <maciej@marczewski.net.pl>\n"
 "Language-Team: Polish <kde-i18n-doc@kde.org>\n"
 "MIME-Version: 1.0\n"
@@ -16,6 +16,30 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2)\n"
 "X-Generator: Lokalize 1.0\n"
+
+#: templates/404.html:4 templates/404.html.py:7
+msgid "Page not found"
+msgstr "Strony nie znaleziono"
+
+#: templates/404.html:6
+msgid "Error 404"
+msgstr "Błąd 404"
+
+#: templates/404.html:10
+msgid "Unfortunately page you were looking for was not found."
+msgstr "Niestety nie znaleziono szukanej strony."
+
+#: templates/500.html:4 templates/500.html.py:7
+msgid "Server error"
+msgstr "Błąd serwera"
+
+#: templates/500.html:6
+msgid "Error 500"
+msgstr "Błąd 500"
+
+#: templates/500.html:10
+msgid "Unfortunately some server error occurred. Please try again later."
+msgstr "Niestety wystąpił jakiś błąd serwera. Prosimy spróbować później."
 
 #: templates/base.html:33
 msgid "This field is required."
@@ -81,6 +105,18 @@ msgstr "Dodaj zdjęcie"
 msgid "Forum"
 msgstr "Forum"
 
+#: templates/base.html:150
+msgid "All rights reserved"
+msgstr "Wszelkie prawa zastrzeżone"
+
+#: templates/base.html:151
+msgid "software"
+msgstr "oprogramowanie"
+
+#: templates/base.html:151
+msgid "web sites creation"
+msgstr "tworzenie stron www"
+
 #: templates/umessages/message_detail.html:4
 #: templates/umessages/message_detail.html:6
 #: templates/umessages/message_form.html:4
@@ -133,9 +169,8 @@ msgid ""
 "Last message <time class=\"datetime\" datetime=\"%(latest_message_at)s\">(%"
 "(latest_message_at)s)</time>: <span>%(latest_message)s</span>"
 msgstr ""
-"Ostatnia wiadomość <time class=\"datetime\" "
-"datetime=\"%(latest_message_at)s\">(%"
-"(latest_message_at)s)</time>: <span>%(latest_message)s</span>"
+"Ostatnia wiadomość <time class=\"datetime\" datetime=\"%(latest_message_at)s"
+"\">(%(latest_message_at)s)</time>: <span>%(latest_message)s</span>"
 
 #: templates/userena/activate_fail.html:4
 msgid "Account activation failed."
@@ -281,7 +316,7 @@ msgstr ""
 #: templates/userena/signin_form.html:14 templates/userena/signin_form.html:44
 #: templates/userena/signup_form.html:10
 msgid "Signin"
-msgstr ""
+msgstr "Zaloguj się"
 
 #: templates/userena/password_reset_complete.html:11
 #: templates/userena/password_reset_confirm_form.html:11
@@ -303,7 +338,7 @@ msgstr ""
 #: templates/userena/password_reset_confirm_form.html:6
 #: templates/userena/password_reset_confirm_form.html:20
 msgid "Reset password"
-msgstr ""
+msgstr "Resetuj hasło"
 
 #: templates/userena/password_reset_done.html:4
 #: templates/userena/password_reset_done.html:6
@@ -317,7 +352,7 @@ msgstr ""
 
 #: templates/userena/password_reset_form.html:20
 msgid "Send password"
-msgstr ""
+msgstr "Wyślij hasło"
 
 #: templates/userena/profile_detail.html:7
 #: templates/userena/profile_detail.html:18
@@ -376,9 +411,27 @@ msgstr ""
 msgid "Hot"
 msgstr ""
 
+#: templates/userena/profile_list.html:28
+msgid "Joined"
+msgstr "Dołączył"
+
+#: templates/userena/profile_list.html:28
+msgid "Last logged"
+msgstr "Ostatnie logowanie"
+
+#: templates/userena/profile_list.html:29
+#, python-format
+msgid "%(photos_count)s photos"
+msgstr "%(photos_count)s zdjęć"
+
+#: templates/userena/profile_list.html:31
+#, python-format
+msgid "%(comment_count)s comments"
+msgstr "%(comment_count)s komentarzy"
+
 #: templates/userena/signout.html:4
 msgid "Signed out"
-msgstr ""
+msgstr "Wylogowano"
 
 #: templates/userena/signout.html:6
 msgid "You have been signed out"
