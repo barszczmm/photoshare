@@ -6,8 +6,8 @@ server {
 	error_log   /var/log/nginx/photoshare.error.log;
 
 	# Static files location
-	location /static {
-		root     /home/barszcz/www/dev/photoshare/app/photoshare/projects/photoshare/;
+	location /static/ {
+		alias     /home/barszcz/www/dev/photoshare/app/photoshare/projects/photoshare/static-collected/;
 		expires  30d;
 	}
 

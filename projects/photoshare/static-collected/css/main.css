@@ -1,0 +1,215 @@
+@charset "utf-8";
+
+/*-----------------------------------------------------------------------------------*/
+/* c) 2011 Maciej 'barszcz' Marczewski | www.barszcz.info | maciej@marczewski.net.pl */
+/*-----------------------------------------------------------------------------------*/
+
+/* ============ reset ========================================= */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video,
+button, fieldset, form, input, label, legend, option, select, textarea {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+	background-color: transparent;
+}
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, dialog,
+footer, header, hgroup, menu, nav, section, canvas, summary {
+	display: block;
+}
+
+:active, :focus, :hover { outline: 0; }
+
+/* Tables still need 'cellspacing="0"' in the markup. */
+table { border-collapse: collapse; border-spacing: 0; }
+caption, th, td { text-align: left; font-weight: normal; }
+table, td, th { vertical-align: middle; }
+
+ul, ol { list-style: none; }
+
+/* Remove possible quote marks (") from <q>, <blockquote>. */
+blockquote:before, blockquote:after, q:before, q:after { content: ""; content: none; }
+blockquote, q { quotes: none; }
+
+textarea { overflow: auto; }
+
+/* Remove annoying border on linked images. */
+a img { border: none; }
+
+a { outline: none; }
+
+/* Remove button padding in FF */
+input::-moz-focus-inner { border: 0; padding: 0; }
+
+/* Remove shadow from focused inputs in Webkit */
+input:focus { outline: none; }
+
+h1, h2, h3, h4, h5, h6 { font-weight: normal; }
+
+strong { font-weight: bold; }
+em { font-style: italic; }
+del { text-decoration: line-through; }
+
+body {
+	font-size: 100.1%;
+	line-height: 1.5;
+}
+
+/* ============================================================ */
+
+body { font-family: Verdana, Geneva, "DejaVu Sans", "Bitstream Vera Sans", "Liberation Sans", sans-serif; font-size: 11px; color: #999; background: #fff; }
+
+.fl { float: left; }
+.fr { float: right; }
+.fn { float: none; }
+.clear { clear: both; }
+.hide { display: none; }
+
+a { color: #666; text-decoration: none; -webkit-transition-property: color, background; -webkit-transition-duration: 0.1s, 0.1s; -webkit-transition-timing-function: linear, linear; -moz-transition-property: color, background; -moz-transition-duration: 0.1s, 0.1s; -moz-transition-timing-function: linear, linear; -o-transition-property: color, background; -o-transition-duration: 0.1s, 0.1s; -o-transition-timing-function: linear, linear; transition-property: color, background; transition-duration: 0.1s, 0.1s; transition-timing-function: linear, linear; }
+a:hover { color: #D16F4E; }
+
+
+#app_messages { display: none; position: fixed; top: 0; left: 50%; }
+#app_messages ul { width: 980px; margin-left: -490px; position: relative; z-index: 500; border: 2px dashed #ccc; border-top: 0; background-color: #eee; overflow: hidden; }
+#app_messages .collapsed,
+#app_messages .expanded { cursor: pointer; }
+#app_messages li { border-top: 2px dashed #ccc; padding: 10px; }
+#app_messages li:first-child { border-top: 0; }
+
+
+#page { width: 980px; margin: 0 auto; }
+
+#header { overflow: hidden; border-bottom: 1px dotted #DDD; padding-bottom: 10px; padding-top: 20px; position: relative; }
+
+#header_logo_and_slogan { float: left; margin-top: 20px; }
+#header_logo { font-family: 'Jockey One', Verdana, Geneva, "DejaVu Sans", "Bitstream Vera Sans", "Liberation Sans", sans-serif; font-size: 36px; text-transform: uppercase; }
+#header_logo a { text-decoration: none; color: #444; -webkit-transition: color 0.4s linear 0s; -moz-transition: color 0.4s linear 0s; -o-transition: color 0.4s linear 0s; transition: color 0.4s linear 0s; }
+#header_logo a:hover { color: #D16F4E; }
+#header_slogan { font-family: Arial, Helmet, "Helvetica Neue", Helvetica, "Nimbus Sans L", Freesans, sans-serif; font-size: 12px; font-weight: bold; position: relative; top: -10px; }
+
+#header_menu { font-family: 'Jockey One', Verdana, Geneva, "DejaVu Sans", "Bitstream Vera Sans", "Liberation Sans", sans-serif; font-size: 18px; float: right; margin-top: 38px; padding-right: 10px; text-transform: uppercase; }
+#header_menu li { float: left; margin-left: 1.5em; }
+#header_menu a { color: #666; text-decoration: none; -webkit-transition: color 0.2s linear 0s; -moz-transition: color 0.2s linear 0s; -o-transition: color 0.2s linear 0s; transition: color 0.2s linear 0s; }
+#header_menu a:hover { color: #D16F4E; }
+
+#user_menu_wrapper { position: absolute; top: 0; left: 0; border-bottom: 1px dotted #DDD; height: 20px; padding-top: 5px; width: 100%; }
+#user_menu { float: right; font-variant: small-caps; height: 100%; }
+#user_menu .authenticated > span { float: left; }
+#user_menu .authenticated > ul { float: left; }
+#user_menu .authenticated > ul li.account { float: left; height: 20px; margin-left: 5px; position: relative; }
+#user_menu .authenticated > ul li.account span { color: #666; }
+#user_menu .authenticated > ul li.account:after { content: "↓"; font-size: 10px; }
+#user_menu .authenticated > ul li.messages { float: left; margin-left: 10px; padding-left: 10px; border-left: 1px dotted #ddd; }
+#user_menu .authenticated ul ul { display: none; position: absolute; top: 20px; right: -11px; padding: 0 1em 0.5em; background: #fff; text-align: right; border: 1px dotted #DDD; border-top: 0; }
+#user_menu .authenticated ul ul li { white-space: nowrap; text-align: right; }
+#user_menu .unauthenticated li { float: left; margin-left: 2em; }
+
+
+#footer { border-top: 1px dotted #DDDDDD; padding: 30px 0; text-align: center; }
+
+
+#content { padding: 25px 0; }
+
+#main > header { border-bottom: 1px dotted #DDD; padding-bottom: 25px; margin-bottom: 20px; overflow: hidden; }
+#maintitle { font-family: 'Jockey One', Verdana, Geneva, "DejaVu Sans", "Bitstream Vera Sans", "Liberation Sans", sans-serif; color: #444; text-transform: uppercase; font-size: 26px; line-height: 26px; float: left; }
+#maintitle a { color: #444; }
+#maintitle a:hover { color: #D16F4E; }
+#subtitle span { color: #aaa; border-left: 1px dotted #ccc; float: left; margin: 8px 0 0 1.5em; padding-left: 1.5em; line-height: 1.2em; font-variant: small-caps; }
+
+#submenu { overflow: hidden; padding: 0 0 25px; font-size: 12px; font-variant: small-caps; }
+#submenu li { float: left; border-left: 1px solid #ddd; margin-left: 1em; padding-left: 1em; line-height: 1.2em; }
+#submenu li:first-child { border-left: 0; margin-left: 0; padding-left: 0; }
+#submenu .current a { color: #D16F4E; }
+
+
+label { font-style: italic; }
+label:after { content: ":"; }
+input,
+textarea,
+select { display: block; margin-bottom: 15px; font-family: Arial, Helmet, "Helvetica Neue", Helvetica, "Nimbus Sans L", Freesans, sans-serif; }
+input[type=text],
+input[type=password],
+input[type=file],
+select,
+textarea { border: 1px solid #E1E1E1; color: #666; padding: 6px 8px; width: 200px; }
+input[type=text]:focus,
+input[type=password]:focus,
+textarea:focus { border-color: #eee; }
+textarea { width: 580px; height: 84px; }
+select { width: 218px; }
+.checkbox { margin-bottom: 15px; }
+.checkbox label { font-style: normal; }
+.checkbox label:after { content: ""; }
+.checkbox label input { margin-bottom: 0; display: inline-block; }
+.confirm { margin-bottom: 15px; }
+input[type=submit] { line-height: 20px; padding: 6px 12px; font-weight: bold; font-size: 12px; display: inline-block; cursor: pointer; -moz-border-radius: 3px; -webkit-border-radius: 3px; border-radius: 3px; color: #777; border: 1px solid #ddd; background: #F1F1F1 url(../img/button.png) repeat-x; }
+.errorlist { color: #CC6666; border: 1px dotted #EEBDBD; padding: 5px 15px; margin-bottom: 14px; margin-top: 16px; float: right; width: 0; overflow: hidden; white-space: nowrap; }
+.helptext { position: relative; top: -12px; font-size: 10px; }
+
+
+.actions { border-bottom: 1px dotted #DDD; margin: -20px 0 20px; padding: 2px; }
+.actions a { display: inline-block; padding: 4px 6px; text-transform: uppercase; font-weight: bold; background: #bbb; color: #fff; }
+.actions a:hover { background: #D16F4E; }
+
+.tabs .tabs-titles { border-bottom: 1px dotted #DDD; margin-bottom: 10px; height: 27px; font-variant: small-caps; }
+.tabs .tab-title { float: left; background: #F3F3F3; border: 1px solid #F3F3F3; border-bottom: 0; margin-right: 10px; font-size: 12px; }
+.tabs .tab-title a { display: block; padding: 4px 10px; }
+.tabs .tabs-titles .active { background: #fff; border-style: dotted; border-color: #DDD; position: relative; top: 1px; }
+.tabs .tab-content { display: none; padding-top: 15px; }
+.tabs .tabs-contents .active { display: block; }
+
+#profile img { border: 1px solid #E1E1E1; padding: 3px; float: left; width: 80px; height: 80px; }
+#profile .info { padding-top: 5px; margin-left: 98px; }
+#profile .info p { margin-bottom: 0.5em; }
+
+#profile_list li { overflow: hidden; margin-top: 10px; }
+#profile_list img { border: 1px solid #E1E1E1; padding: 3px; float: left; width: 80px; height: 80px; }
+#profile_list .info { padding-top: 5px; margin-left: 98px; }
+#profile_list .meta { margin-bottom: 5px; }
+#profile_list .username { font-family: 'Jockey One', Verdana, Geneva, "DejaVu Sans", "Bitstream Vera Sans", "Liberation Sans", sans-serif; color: #444; text-transform: uppercase; font-size: 22px; }
+#profile_list .username:hover { color: #D16F4E; }
+
+#comment_list { padding-top: 10px; }
+#comment_list li { overflow: hidden; margin-top: 10px; }
+#comment_list img { border: 1px solid #E1E1E1; padding: 3px; float: left; width: 80px; height: 80px; }
+#comment_list .info { padding-top: 5px; margin-left: 98px; }
+#comment_list .meta { margin-bottom: 5px; }
+#comment_list .username { font-weight: bold; font-variant: small-caps; font-size: 12px; }
+#comment_list .datetime { font-size: 10px; color: #ccc; }
+
+#message_list li { overflow: hidden; margin-top: 10px; }
+#message_list img { border: 1px solid #E1E1E1; padding: 3px; float: left; width: 80px; height: 80px; }
+#message_list .info { padding-top: 5px; margin-left: 98px; }
+#message_list .meta { margin-bottom: 5px; }
+#message_list .meta a { font-variant: small-caps; font-size: 12px; }
+#message_list .username { font-weight: bold; }
+#message_list .last { font-size: 10px; color: #ccc; }
+#message_list .last span { display: block; font-size: 11px; color: #999; }
+#message_list .new { margin-bottom: 5px; font-size: 10px; color: #ccc; }
+#message_list .datetime { font-size: 10px; color: #ccc; }
+
+#photo_list .photo { border-top: 1px dotted #DDD; }
+#photo_list .photo:first-child { border-top: 0; }
+.photo > header > h1 { font-family: 'Jockey One', Verdana, Geneva, "DejaVu Sans", "Bitstream Vera Sans", "Liberation Sans", sans-serif; color: #444; text-transform: uppercase; font-size: 22px; }
+.photo > header > h1 a { color: #444; }
+.photo > header > h1 a:hover { color: #D16F4E; }
+.photo .username { font-variant: small-caps; }
+.photo .comments:before { content: "/ "; margin: 0 0.5em; }
+
+
