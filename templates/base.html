@@ -52,8 +52,8 @@
 			<div id="header_wrapper_inner">
 				<header id="header">
 
-					<hgroup id="header_logo_and_slogan">
-						<h1 id="header_logo"><a href="http://{{ site.domain }}">{{ site.name }}</a></h1>
+					<hgroup id="header_title_and_slogan">
+						<h1 id="header_title"><a href="http://{{ site.domain }}">{{ site.name }}</a></h1>
 						<h2 id="header_slogan">{{ settings.SLOGAN }}</h2>
 					</hgroup>
 
@@ -147,8 +147,8 @@
 					</nav>
 
 					<div id="footer_copyright_and_author">
-						<p id="footer_copyright">Wszelkie prawa zastrzeżone &copy; {% now "Y" %} <a href="http://{{ site.domain }}">{{ site.name }}</a></p>
-						<p id="footer_author"><strong><a href="http://www.barszcz.info/" target="_blank">oprogramowanie: <br />Maciej 'barszcz' Marczewski<span style="display: none; visibility: hidden;"> - projektowanie stron www</span></a></strong></p>
+						<p id="footer_copyright">{% trans "All rights reserved" %} &copy; {% now "Y" %} <a href="http://{{ site.domain }}">{{ site.name }}</a></p>
+						<p id="footer_author"><strong><a href="http://www.barszcz.info/" target="_blank"><span class="software">{% trans "software" %}: </span><span class="author">Maciej 'barszcz' Marczewski</span><span style="display: none; visibility: hidden;"> - {% trans "web sites creation" %}</span></a></strong></p>
 					</div>
 
 				</footer><!-- #footer -->
