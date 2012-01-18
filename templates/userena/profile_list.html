@@ -1,5 +1,5 @@
 {% extends 'userena/base_userena.html' %}
-{% load i18n %}
+{% load i18n comments %}
 
 {% block title %}{% trans "Users" %}{% endblock %}
 
@@ -25,6 +25,10 @@
 					</a>
 					<div class="info">
 						<p class="meta"><a class="username" href="{{ profile.get_absolute_url }}">{{ profile.user.username }}</a></p>
+						<p class="dates"><span class="joined">{% trans "Joined" %}: <time datetime="{{ profile.user.date_joined }}">{{ profile.user.date_joined }}</time></span> <span class="lastlogin">{% trans "Last logged" %}: <time datetime="{{ profile.user.last_login }}">{{ profile.user.last_login }}</time></span></p>
+						<p class="photos"><a href="{% url profile_photos profile.user.username %}">{% blocktrans with profile.user.photos.count as photos_count %}{{ photos_count }} photos{% endblocktrans %}</a></p>
+						{% get_comment_count for profile as comment_count %}
+						<p class="comments"><a href="{% url profile_comments profile.user.username %}">{% blocktrans %}{{ comment_count }} comments{% endblocktrans %}</a></p>
 					</div>
 				</li>
 				{% endfor %}

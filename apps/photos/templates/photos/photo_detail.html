@@ -1,9 +1,9 @@
 {% extends 'base.html' %}
 {% load i18n comments %}
 
-{% block title %}{% trans "Photos" %}{{ settings.TITLE_SEPARATOR }}{% blocktrans with photo.title as photo_title and photo.user.username as username %}{{ photo_title }} by {{ username }}{% endblocktrans %}{% endblock %}
+{% block title %}{% trans "Photos" %}{{ settings.TITLE_SEPARATOR }}{% blocktrans with photo.title as photo_title and photo.user.username as username %}{{ photo_title }} by {{ username }}{% endblocktrans %}{% block titlepart %}{% endblock %}{% endblock %}
 
-{% block maintitle %}<a href="{% url photos_list_photos %}">{% trans "Photos" %}</a> / {% blocktrans with photo.title as photo_title and photo.get_absolute_url as photo_url and photo.user.username as username and photo.user.get_profile.get_absolute_url as user_url %}<a href="{{ photo_url }}">{{ photo_title }}</a> by <a href="{{ user_url }}">{{ username }}</a>{% endblocktrans %}{% endblock %}
+{% block maintitle %}<a href="{% url photos_list_photos %}">{% trans "Photos" %}</a> / <a href="{{ photo.get_absolute_url }}">{{ photo.title }} <span class="by">{% trans "by" %}</span> {{ photo.user.username }}</a>{% endblock %}
 {% block subtitle %}<span>{% trans "Info" %}</span>{% endblock %}
 
 {% block main %}

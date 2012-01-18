@@ -22,7 +22,7 @@
 				{% for photo in photo_list %}
 				<article class="photo">
 					<header>
-						<h1><a href="{{ photo.get_absolute_url }}">{{ photo.title }}</a></h1>
+						<h1><a href="{{ photo.get_absolute_url }}">{{ photo.title }} <span class="by">{% trans "by" %}</span> {{ photo.user.username }}</a></h1>
 					</header>
 					<footer>
 						{% get_comment_count for photo as comment_count %}

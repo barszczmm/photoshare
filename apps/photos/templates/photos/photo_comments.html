@@ -1,7 +1,7 @@
 {% extends 'photos/photo_detail.html' %}
 {% load i18n comments %}
 
-{% block title %}{% trans "Photos" %}{{ settings.TITLE_SEPARATOR }}{% blocktrans with photo.title as photo_title and photo.user.username as username %}{{ photo_title }} by {{ username }}{% endblocktrans %}{{ settings.TITLE_SEPARATOR }}{% trans "Comments" %}{% endblock %}
+{% block titlepart %}{{ settings.TITLE_SEPARATOR }}{% trans "Comments" %}{% endblock %}
 
 {% block subtitle %}<span>{% trans "Comments" %}</span>{% endblock %}
 
