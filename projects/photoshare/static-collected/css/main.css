@@ -95,17 +95,17 @@ a:hover { color: #D16F4E; }
 
 #page { width: 980px; margin: 0 auto; }
 
-#header { overflow: hidden; border-bottom: 1px dotted #DDD; padding-bottom: 10px; padding-top: 20px; position: relative; }
+#header { overflow: hidden; border-bottom: 1px dotted #DDD; padding-top: 25px; position: relative; }
 
-#header_logo_and_slogan { float: left; margin-top: 20px; }
-#header_logo { font-family: 'Jockey One', Verdana, Geneva, "DejaVu Sans", "Bitstream Vera Sans", "Liberation Sans", sans-serif; font-size: 36px; text-transform: uppercase; }
-#header_logo a { text-decoration: none; color: #444; -webkit-transition: color 0.4s linear 0s; -moz-transition: color 0.4s linear 0s; -o-transition: color 0.4s linear 0s; transition: color 0.4s linear 0s; }
-#header_logo a:hover { color: #D16F4E; }
-#header_slogan { font-family: Arial, Helmet, "Helvetica Neue", Helvetica, "Nimbus Sans L", Freesans, sans-serif; font-size: 12px; font-weight: bold; position: relative; top: -10px; }
+#header_title_and_slogan { float: left; background: url(../img/logo.jpg) no-repeat left center; padding-left: 70px; height: 100px; }
+#header_title { font-family: 'Jockey One', Verdana, Geneva, "DejaVu Sans", "Bitstream Vera Sans", "Liberation Sans", sans-serif; font-size: 36px; line-height: 36px; text-transform: uppercase; margin-top: 30px; }
+#header_title a { text-decoration: none; color: #444; -webkit-transition: color 0.6s linear 0s; -moz-transition: color 0.6s linear 0s; -o-transition: color 0.6s linear 0s; transition: color 0.6s linear 0s; }
+#header_title a:hover { color: #D16F4E; }
+#header_slogan { font-family: Arial, Helmet, "Helvetica Neue", Helvetica, "Nimbus Sans L", Freesans, sans-serif; font-size: 12px; font-weight: bold; position: relative; top: -4px; }
 
 #header_menu { font-family: 'Jockey One', Verdana, Geneva, "DejaVu Sans", "Bitstream Vera Sans", "Liberation Sans", sans-serif; font-size: 18px; float: right; margin-top: 38px; padding-right: 10px; text-transform: uppercase; }
 #header_menu li { float: left; margin-left: 1.5em; }
-#header_menu a { color: #666; text-decoration: none; -webkit-transition: color 0.2s linear 0s; -moz-transition: color 0.2s linear 0s; -o-transition: color 0.2s linear 0s; transition: color 0.2s linear 0s; }
+#header_menu a { color: #666; text-decoration: none; -webkit-transition: color 0.3s linear 0s; -moz-transition: color 0.3s linear 0s; -o-transition: color 0.3s linear 0s; transition: color 0.3s linear 0s; }
 #header_menu a:hover { color: #D16F4E; }
 
 #user_menu_wrapper { position: absolute; top: 0; left: 0; border-bottom: 1px dotted #DDD; height: 20px; padding-top: 5px; width: 100%; }
@@ -122,14 +122,17 @@ a:hover { color: #D16F4E; }
 
 
 #footer { border-top: 1px dotted #DDDDDD; padding: 30px 0; text-align: center; }
+#footer_author { margin-top: 30px; }
+#footer_author .software { display: block; }
 
 
 #content { padding: 25px 0; }
 
 #main > header { border-bottom: 1px dotted #DDD; padding-bottom: 25px; margin-bottom: 20px; overflow: hidden; }
 #maintitle { font-family: 'Jockey One', Verdana, Geneva, "DejaVu Sans", "Bitstream Vera Sans", "Liberation Sans", sans-serif; color: #444; text-transform: uppercase; font-size: 26px; line-height: 26px; float: left; }
-#maintitle a { color: #444; }
+#maintitle a { color: #444; -webkit-transition: color 0.3s linear 0s; -moz-transition: color 0.3s linear 0s; -o-transition: color 0.3s linear 0s; transition: color 0.3s linear 0s; }
 #maintitle a:hover { color: #D16F4E; }
+#maintitle .by { font-size: 20px; margin: 0 0.1em; }
 #subtitle span { color: #aaa; border-left: 1px dotted #ccc; float: left; margin: 8px 0 0 1.5em; padding-left: 1.5em; line-height: 1.2em; font-variant: small-caps; }
 
 #submenu { overflow: hidden; padding: 0 0 25px; font-size: 12px; font-variant: small-caps; }
@@ -180,10 +183,10 @@ input[type=submit] { line-height: 20px; padding: 6px 12px; font-weight: bold; fo
 
 #profile_list li { overflow: hidden; margin-top: 10px; }
 #profile_list img { border: 1px solid #E1E1E1; padding: 3px; float: left; width: 80px; height: 80px; }
-#profile_list .info { padding-top: 5px; margin-left: 98px; }
-#profile_list .meta { margin-bottom: 5px; }
-#profile_list .username { font-family: 'Jockey One', Verdana, Geneva, "DejaVu Sans", "Bitstream Vera Sans", "Liberation Sans", sans-serif; color: #444; text-transform: uppercase; font-size: 22px; }
+#profile_list .info { margin-left: 98px; }
+#profile_list .username { font-family: 'Jockey One', Verdana, Geneva, "DejaVu Sans", "Bitstream Vera Sans", "Liberation Sans", sans-serif; color: #444; text-transform: uppercase; font-size: 22px; -webkit-transition: color 0.3s linear 0s; -moz-transition: color 0.3s linear 0s; -o-transition: color 0.3s linear 0s; transition: color 0.3s linear 0s; }
 #profile_list .username:hover { color: #D16F4E; }
+#profile_list .dates .lastlogin:before { content: " / "; }
 
 #comment_list { padding-top: 10px; }
 #comment_list li { overflow: hidden; margin-top: 10px; }
@@ -204,11 +207,13 @@ input[type=submit] { line-height: 20px; padding: 6px 12px; font-weight: bold; fo
 #message_list .new { margin-bottom: 5px; font-size: 10px; color: #ccc; }
 #message_list .datetime { font-size: 10px; color: #ccc; }
 
-#photo_list .photo { border-top: 1px dotted #DDD; }
-#photo_list .photo:first-child { border-top: 0; }
+#photo_list .photo { border-top: 1px dotted #DDD; padding-top: 20px; margin-top: 50px; }
+#photo_list .photo:first-child { border-top: 0; padding-top: 0; margin-top: 0; }
 .photo > header > h1 { font-family: 'Jockey One', Verdana, Geneva, "DejaVu Sans", "Bitstream Vera Sans", "Liberation Sans", sans-serif; color: #444; text-transform: uppercase; font-size: 22px; }
-.photo > header > h1 a { color: #444; }
+.photo > header > h1 a { color: #444; -webkit-transition: color 0.3s linear 0s; -moz-transition: color 0.3s linear 0s; -o-transition: color 0.3s linear 0s; transition: color 0.3s linear 0s; }
 .photo > header > h1 a:hover { color: #D16F4E; }
+.photo > header > h1 .by { font-size: 17px; margin: 0 0.1em; }
+.photo > footer { margin-bottom: 10px; }
 .photo .username { font-variant: small-caps; }
 .photo .comments:before { content: "/ "; margin: 0 0.5em; }
 
