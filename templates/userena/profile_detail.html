@@ -3,12 +3,39 @@
 
 {% block title %}{% trans "Users" %}{{ settings.TITLE_SEPARATOR }}{{ profile.user.username }}{% block titlepart %}{% endblock %}{% endblock %}
 
+{% block afterbodyopen %}
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/{% if LANGUAGE_CODE == "pl" %}pl_PL{% else %}en_US{% endif %}/all.js#xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+<script type="text/javascript">
+  window.___gcfg = {lang: '{{ LANGUAGE_CODE }}'};
+  (function() {
+    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+    po.src = 'https://apis.google.com/js/plusone.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+  })();
+</script>
+
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+{% endblock %}
+
 {% block maintitle %}<a href="{% url userena_profile_list %}">{% trans "Users" %}</a> / <a href="{{ profile.get_absolute_url }}">{{ profile.user.username }}</a>{% endblock %}
 {% block subtitle %}<span>{% trans "Info" %}</span>{% endblock %}
 
 {% block main %}
 <div class="actions">
 	<a href="{% url userena_umessages_compose_to profile.user.username %}">{% trans "Send message" %}</a>
+	<div class="social-buttons">
+		<div class="fb-like" data-href="http://{{ site.domain }}{{ profile.get_absolute_url }}" data-send="false" data-layout="button_count" data-width="150" data-show-faces="false"></div>
+		<a href="https://twitter.com/share" class="twitter-share-button" data-lang="{{ LANGUAGE_CODE }}" data-url="http://{{ site.domain }}{{ profile.get_absolute_url }}">Tweet</a>
+		<div class="g-plusone" data-size="medium" data-href="http://{{ site.domain }}{{ profile.get_absolute_url }}"></div>
+	</div>
 </div>
 
 <div class="tabs no-hash">

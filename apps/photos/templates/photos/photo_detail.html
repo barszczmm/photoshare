@@ -30,10 +30,11 @@
 					<p class="meta">
 						{% blocktrans with photo.user.get_profile.get_absolute_url as user_url and photo.user.username as username and photo.uploaded_at as added_at %}Added by <a class="username" href="{{ user_url }}">{{ username }}</a> at <time class="datetime" datetime="{{ added_at }}">{{ added_at }}</time>
 						{% endblocktrans %}
-						<span class="comments">{% blocktrans %}{{ comment_count }} comments{% endblocktrans %}</span>
+						<a class="comments" href="{% url photos_comments_photo photo.id %}">{% blocktrans %}{{ comment_count }} comments{% endblocktrans %}</a>
 					</p>
 				</footer>
 				<img src="{{ photo.image.url }}" />
+				<p class="description">{{ photo.description|linebreaksbr }}</p>
 			</article>
 			{% endblock %}
 		</div>

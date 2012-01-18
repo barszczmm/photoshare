@@ -36,6 +36,7 @@
 	<title>{% block title %}{% endblock %} | {{ site.name }}</title>
 </head>
 <body id="{% block body_id %}{% endblock %}" class="{% block body_class %}{% endblock %}">
+	{% block afterbodyopen %}{% endblock %}
 
 	{% if messages %}
 	<div id="app_messages">
@@ -46,6 +47,7 @@
 		</ul>
 	</div>
 	{% endif %}
+
 	<div id="page">
 
 		<div id="header_wrapper">
