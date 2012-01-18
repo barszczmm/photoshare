@@ -12,9 +12,9 @@ class Photo(models.Model):
     """
     Photo uploaded by user.
     """
-    user = models.ForeignKey(User)
-    title = models.CharField(_("title"), max_length=200)
+    user = models.ForeignKey(User, related_name='photos')
     image = models.ImageField(_("image"), upload_to=get_upload_path)
+    title = models.CharField(_("title"), max_length=200)
     description = models.TextField(_("description"), blank=True, null=True)
     uploaded_at = models.DateTimeField(_("uploaded at"), auto_now_add=True)
 
