@@ -81,7 +81,7 @@ body { font-family: Verdana, Geneva, "DejaVu Sans", "Bitstream Vera Sans", "Libe
 .clear { clear: both; }
 .hide { display: none; }
 
-a { color: #666; text-decoration: none; -webkit-transition-property: color, background; -webkit-transition-duration: 0.1s, 0.1s; -webkit-transition-timing-function: linear, linear; -moz-transition-property: color, background; -moz-transition-duration: 0.1s, 0.1s; -moz-transition-timing-function: linear, linear; -o-transition-property: color, background; -o-transition-duration: 0.1s, 0.1s; -o-transition-timing-function: linear, linear; transition-property: color, background; transition-duration: 0.1s, 0.1s; transition-timing-function: linear, linear; }
+a { color: #666; text-decoration: none; -webkit-transition-property: color, background; -webkit-transition-duration: 0.2s, 0.2s; -webkit-transition-timing-function: linear, linear; -moz-transition-property: color, background; -moz-transition-duration: 0.2s, 0.2s; -moz-transition-timing-function: linear, linear; -o-transition-property: color, background; -o-transition-duration: 0.2s, 0.2s; -o-transition-timing-function: linear, linear; transition-property: color, background; transition-duration: 0.2s, 0.2s; transition-timing-function: linear, linear; }
 a:hover { color: #D16F4E; }
 
 
@@ -166,9 +166,12 @@ input[type=submit] { line-height: 20px; padding: 6px 12px; font-weight: bold; fo
 .helptext { position: relative; top: -12px; font-size: 10px; }
 
 
-.actions { border-bottom: 1px dotted #DDD; margin: -20px 0 20px; padding: 2px; }
-.actions a { display: inline-block; padding: 4px 6px; text-transform: uppercase; font-weight: bold; background: #bbb; color: #fff; }
+.actions { border-bottom: 1px dotted #DDD; margin: -20px 0 20px; padding: 2px; position: relative; }
+.actions a { display: inline-block; padding: 4px 6px; text-transform: uppercase; font-weight: bold; background: #bbb; color: #fff; -webkit-transition-duration: 0.3s, 0.3s; -moz-transition-duration: 0.3s, 0.3s; -o-transition-duration: 0.3s, 0.3s; transition-duration: 0.3s, 0.3s; }
 .actions a:hover { background: #D16F4E; }
+.actions .social-buttons { display: inline-block; position: absolute; top: 5px; right: 0; }
+.actions .social-buttons .fb-like { position: relative; top: -3px; }
+.actions .social-buttons .twitter-share-button { margin-right: 30px; }
 
 .tabs .tabs-titles { border-bottom: 1px dotted #DDD; margin-bottom: 10px; height: 27px; font-variant: small-caps; }
 .tabs .tab-title { float: left; background: #F3F3F3; border: 1px solid #F3F3F3; border-bottom: 0; margin-right: 10px; font-size: 12px; }
@@ -198,14 +201,13 @@ input[type=submit] { line-height: 20px; padding: 6px 12px; font-weight: bold; fo
 
 #message_list li { overflow: hidden; margin-top: 10px; }
 #message_list img { border: 1px solid #E1E1E1; padding: 3px; float: left; width: 80px; height: 80px; }
-#message_list .info { padding-top: 5px; margin-left: 98px; }
-#message_list .meta { margin-bottom: 5px; }
-#message_list .meta a { font-variant: small-caps; font-size: 12px; }
-#message_list .username { font-weight: bold; }
-#message_list .last { font-size: 10px; color: #ccc; }
-#message_list .last span { display: block; font-size: 11px; color: #999; }
-#message_list .new { margin-bottom: 5px; font-size: 10px; color: #ccc; }
-#message_list .datetime { font-size: 10px; color: #ccc; }
+#message_list .info { margin-left: 98px; }
+#message_list .meta {  }
+#message_list .meta a { font-family: 'Jockey One', Verdana, Geneva, "DejaVu Sans", "Bitstream Vera Sans", "Liberation Sans", sans-serif; color: #444; text-transform: uppercase; font-size: 22px; -webkit-transition: color 0.3s linear 0s; -moz-transition: color 0.3s linear 0s; -o-transition: color 0.3s linear 0s; transition: color 0.3s linear 0s; }
+#message_list .meta a:hover { color: #D16F4E; }
+#message_list .last { color: #ccc; }
+#message_list .last span { display: block; color: #999; }
+#message_list .datetime { color: #ccc; }
 
 #photo_list .photo { border-top: 1px dotted #DDD; padding-top: 20px; margin-top: 50px; }
 #photo_list .photo:first-child { border-top: 0; padding-top: 0; margin-top: 0; }
@@ -215,6 +217,6 @@ input[type=submit] { line-height: 20px; padding: 6px 12px; font-weight: bold; fo
 .photo > header > h1 .by { font-size: 17px; margin: 0 0.1em; }
 .photo > footer { margin-bottom: 10px; }
 .photo .username { font-variant: small-caps; }
-.photo .comments:before { content: "/ "; margin: 0 0.5em; }
-
+.photo .datetime:after { content: " / "; margin: 0 0.5em; }
+.photo .description { margin-top: 10px; }
 
