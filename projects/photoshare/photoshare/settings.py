@@ -179,7 +179,7 @@ DEFAULT_FROM_EMAIL = 'admin@barszcz.info'
 EMAIL_SUBJECT_PREFIX = '[photoshare] '
 # Whether to send an email to the MANAGERS each time somebody visits a Django-powered page
 # that is 404ed with a non-empty referer (i.e., a broken link).
-SEND_BROKEN_LINK_EMAILS = True
+SEND_BROKEN_LINK_EMAILS = False
 
 
 # A sample logging configuration. The only tangible logging
