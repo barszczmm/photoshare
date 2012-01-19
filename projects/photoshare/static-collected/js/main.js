@@ -63,7 +63,7 @@ $(document).ready(function() {
 
 	//animateAppMessages();
 
-	//
+	// validate comment form
 	$('#post_comment input[type="submit"]').click(
 		function() {
 			var $comment = $(this).parents('form:first').find('p textarea');
@@ -86,15 +86,25 @@ $(document).ready(function() {
 		}
 	);
 
-	// show usermenu submenu
-	$('#user_menu .authenticated .account').hover(
+	// show usermenu info
+	$('#user_menu .account').hover(
 		function() {
-			$('ul', this).slideDown();
+			$('.info', this).css({height: 'auto'}).slideDown();
 		},
 		function() {
-			$('ul', this).slideUp();
+			$('.info', this).stop().slideUp();
 		}
-	).find('ul').css('opacity', 0.9);
+	);
+
+	// usernamenu languages form
+	$('#user_menu .language').not('.active').click(
+		function() {
+			var $clicked = $(this),
+				$form = $clicked.parents('form');
+			$('#language', $form).val($clicked.data('lang'));
+			$form.submit();
+		}
+	);
 
 	// tabs
 	$('.tabs').each(
