@@ -118,7 +118,7 @@ a:hover { color: #D16F4E; }
 #user_menu .account a.username img { position: absolute; top: -2px; right: 0; width: 18px; height: 18px; }
 #user_menu .account span.username { color: #666; }
 #user_menu .account .info { min-width: 100%; padding: 0 10px; display: none; position: absolute; top: 20px; right: -11px; background: #fff; border: 1px dotted #DDD; border-top: 0; overflow: hidden; }
-#user_menu_wrapper:hover .account .info { -moz-box-shadow: 0 2px 7px rgba(0,0,0,0.1); -webkit-box-shadow: 0 2px 7px rgba(0,0,0,0.1); box-shadow: 0 2px 7px rgba(0,0,0,0.1); }
+#user_menu_wrapper:hover .account .info { -moz-box-shadow: 0 3px 7px rgba(0,0,0,0.1); -webkit-box-shadow: 0 3px 7px rgba(0,0,0,0.1); box-shadow: 0 3px 7px rgba(0,0,0,0.1); }
 #user_menu .account .info img { float: left; margin: 10px 0 10px 0;}
 #user_menu .account .info ul { margin: 10px 0 0 90px; text-align: right; }
 #user_menu .account .info .profile-view { font-size: 26px; line-height: 26px; font-family: 'Jockey One', Verdana, Geneva, "DejaVu Sans", "Bitstream Vera Sans", "Liberation Sans", sans-serif; text-transform: uppercase; position: relative; top: -2px; -webkit-transition-duration: 0.3s, 0.3s; -moz-transition-duration: 0.3s, 0.3s; -o-transition-duration: 0.3s, 0.3s; transition-duration: 0.3s, 0.3s; }
