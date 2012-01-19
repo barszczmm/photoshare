@@ -108,17 +108,30 @@ a:hover { color: #D16F4E; }
 #header_menu a { color: #666; text-decoration: none; -webkit-transition: color 0.3s linear 0s; -moz-transition: color 0.3s linear 0s; -o-transition: color 0.3s linear 0s; transition: color 0.3s linear 0s; }
 #header_menu a:hover { color: #D16F4E; }
 
-#user_menu_wrapper { position: absolute; top: 0; left: 0; border-bottom: 1px dotted #DDD; height: 20px; padding-top: 5px; width: 100%; }
-#user_menu { float: right; font-variant: small-caps; height: 100%; }
-#user_menu .authenticated > span { float: left; }
-#user_menu .authenticated > ul { float: left; }
-#user_menu .authenticated > ul li.account { float: left; height: 20px; margin-left: 5px; position: relative; }
-#user_menu .authenticated > ul li.account span { color: #666; }
-#user_menu .authenticated > ul li.account:after { content: "↓"; font-size: 10px; }
-#user_menu .authenticated > ul li.messages { float: left; margin-left: 10px; padding-left: 10px; border-left: 1px dotted #ddd; }
-#user_menu .authenticated ul ul { display: none; position: absolute; top: 20px; right: -11px; padding: 0 1em 0.5em; background: #fff; text-align: right; border: 1px dotted #DDD; border-top: 0; }
-#user_menu .authenticated ul ul li { white-space: nowrap; text-align: right; }
-#user_menu .unauthenticated li { float: left; margin-left: 2em; }
+#user_menu_wrapper { position: fixed; top: 0; left: 0; border-bottom: 1px dotted #DDD; height: 20px; padding-top: 5px; width: 100%; z-index: 666; background: #fff; }
+#user_menu_wrapper:hover { -moz-box-shadow: 0 1px 10px rgba(0,0,0,0.1); -webkit-box-shadow: 0 1px 10px rgba(0,0,0,0.1); box-shadow: 0 1px 10px rgba(0,0,0,0.1); }
+#user_menu { float: right; margin-right: 10px; font-variant: small-caps; height: 100%; }
+#user_menu li { white-space: nowrap; float: left; }
+#user_menu li li { float: none; }
+#user_menu .account { height: 20px; position: relative; }
+#user_menu .account a.username { position: relative; padding-right: 24px; }
+#user_menu .account a.username img { position: absolute; top: -2px; right: 0; width: 18px; height: 18px; }
+#user_menu .account span.username { color: #666; }
+#user_menu .account .info { min-width: 100%; padding: 0 10px; display: none; position: absolute; top: 20px; right: -11px; background: #fff; border: 1px dotted #DDD; border-top: 0; overflow: hidden; }
+#user_menu_wrapper:hover .account .info { -moz-box-shadow: 0 2px 7px rgba(0,0,0,0.1); -webkit-box-shadow: 0 2px 7px rgba(0,0,0,0.1); box-shadow: 0 2px 7px rgba(0,0,0,0.1); }
+#user_menu .account .info img { float: left; margin: 10px 0 10px 0;}
+#user_menu .account .info ul { margin: 10px 0 0 90px; text-align: right; }
+#user_menu .account .info .profile-view { font-size: 26px; line-height: 26px; font-family: 'Jockey One', Verdana, Geneva, "DejaVu Sans", "Bitstream Vera Sans", "Liberation Sans", sans-serif; text-transform: uppercase; position: relative; top: -2px; -webkit-transition-duration: 0.3s, 0.3s; -moz-transition-duration: 0.3s, 0.3s; -o-transition-duration: 0.3s, 0.3s; transition-duration: 0.3s, 0.3s; }
+#user_menu .account .info .profile-edit { margin: 10px 0 12px; }
+#user_menu .messages { margin-left: 10px; padding-left: 10px; border-left: 1px dotted #ddd; }
+#user_menu .messages .new { color: #999; }
+#user_menu .messages .non-zero { color: #D16F4E; }
+#user_menu .languages { margin-left: 10px; padding-left: 10px; border-left: 1px dotted #ddd; opacity: 0.5; }
+#user_menu_wrapper:hover .languages { opacity: 1; }
+#user_menu .languages .language { display: inline-block; width: 18px; height: 12px; padding: 1px; text-indent: -9999em; background-position: center center; background-repeat: no-repeat; border: 1px solid #ddd; position: relative; top: 1px; cursor: pointer; opacity: 0.5; }
+#user_menu .languages .pl { background-image: url(../img/flags/pl.png); }
+#user_menu .languages .en { background-image: url(../img/flags/gb.png); }
+#user_menu .languages .active { border-color: #bbb; cursor: default; opacity: 1; }
 
 
 #footer { border-top: 1px dotted #DDDDDD; padding: 30px 0; text-align: center; }
@@ -166,9 +179,9 @@ input[type=submit] { line-height: 20px; padding: 6px 12px; font-weight: bold; fo
 .helptext { position: relative; top: -12px; font-size: 10px; }
 
 
-.actions { border-bottom: 1px dotted #DDD; margin: -20px 0 20px; padding: 2px; position: relative; }
-.actions a { display: inline-block; padding: 4px 6px; text-transform: uppercase; font-weight: bold; background: #bbb; color: #fff; -webkit-transition-duration: 0.3s, 0.3s; -moz-transition-duration: 0.3s, 0.3s; -o-transition-duration: 0.3s, 0.3s; transition-duration: 0.3s, 0.3s; }
-.actions a:hover { background: #D16F4E; }
+.actions { border-bottom: 1px dotted #DDD; margin: -20px 0 20px; height: 24px; padding: 2px; position: relative; }
+.actions .action { display: inline-block; height: 16px; padding: 4px 6px; text-transform: uppercase; font-weight: bold; background: #bbb; color: #fff; -webkit-transition-duration: 0.3s, 0.3s; -moz-transition-duration: 0.3s, 0.3s; -o-transition-duration: 0.3s, 0.3s; transition-duration: 0.3s, 0.3s; }
+.actions .action:hover { background: #D16F4E; }
 .actions .social-buttons { display: inline-block; position: absolute; top: 5px; right: 0; }
 .actions .social-buttons .fb-like { position: relative; top: -3px; }
 .actions .social-buttons .twitter-share-button { margin-right: 30px; }
