@@ -12,7 +12,7 @@
 
 {% block main %}
 <div class="actions">
-	<a class="action" href="{% url userena_umessages_compose_to profile.user.username %}">{% trans "Send message" %}</a>
+	{% if profile.user != user %}<a class="action" href="{% url userena_umessages_compose_to profile.user.username %}">{% trans "Send message" %}</a>{% endif %}
 	<div class="social-buttons">
 		<div class="fb-like" data-href="http://{{ site.domain }}{{ profile.get_absolute_url }}" data-send="false" data-layout="button_count" data-width="150" data-show-faces="false"></div>
 		<a href="https://twitter.com/share" class="twitter-share-button" data-lang="{{ LANGUAGE_CODE }}" data-url="http://{{ site.domain }}{{ profile.get_absolute_url }}">Tweet</a>
