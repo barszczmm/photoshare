@@ -61,39 +61,48 @@
 
 					<div id="user_menu_wrapper">
 						<nav id="user_menu">
-							{% block user_menu %}
-								{% if user.is_authenticated %}
-									<div class="authenticated">
-										<span class="intro">{% trans "Logged in as" %} </span>
-										<ul>
-											<li class="account">
-											{% if user.get_profile %}
-												<a href="{{ user.get_profile.get_absolute_url }}">{{ user.username }}</a>
-												<ul>
-													<li><a href="{% url userena_profile_edit user.username %}">{% trans "Edit Profile" %}</a></li>
-													<li><a href="{% url userena_signout %}">{% trans "Signout" %}</a></li>
-												</ul>
-											{% else %}
-												<span>{{ user.username }}</span>
-												<ul>
-													<li><a href="{% url userena_signout %}">{% trans "Signout" %}</a></li>
-												</ul>
-											{% endif %}
-											</li>
-											<li class="messages">
-												{% get_unread_message_count_for user as unread_message_count %}
-												<a href="{% url userena_umessages_list %}">{% trans "Messages" %}</a> <span class="new">({% blocktrans %}{{ unread_message_count }} new{% endblocktrans %})</span>
-											</li>
-										</ul>
-									</div>
+							<ul>
+							{% if user.is_authenticated %}
+								<li class="account">
+									<span class="intro">{% trans "Logged in as" %} </span>
+								{% if user.get_profile %}
+									<a class="username" href="{{ user.get_profile.get_absolute_url }}">{{ user.username }}<img src="{{ user.get_profile.get_mugshot_url }}" alt="{{ user.username }}" /></a>
 								{% else %}
-									<div class="unauthenticated">
+									<span class="username">{{ user.username }}</span>
+								{% endif %}
+									<div class="info">
+										{% if user.get_profile %}
+											<a href="{{ user.get_profile.get_absolute_url }}">
+												<img src="{{ user.get_profile.get_mugshot_url }}" alt="{{ user.username }}" />
+											</a>
+										{% endif %}
 										<ul>
-											<li><a href="{% url userena_signin %}">{% trans "Signing in" %} / {% trans "Signing up" %}</a></li>
+										{% if user.get_profile %}
+											<li class="profile-view"><a href="{{ user.get_profile.get_absolute_url }}">{{ user.username }}</a></li>
+											<li class="profile-edit"><a href="{% url userena_profile_edit user.username %}">{% trans "Edit Profile" %}</a></li>
+										{% endif %}
+											<li class="signout"><a href="{% url userena_signout %}">{% trans "Signout" %}</a></li>
 										</ul>
 									</div>
-								{% endif %}
-							{% endblock %}
+								</li>
+								<li class="messages">
+									{% get_unread_message_count_for user as unread_message_count %}
+									<a href="{% url userena_umessages_list %}">{% trans "Messages" %} <span class="new{% if unread_message_count != 0 %} non-zero{% endif %}">({% blocktrans %}{{ unread_message_count }} new{% endblocktrans %})</span></a>
+								</li>
+							{% else %}
+								<li class="signin"><a href="{% url userena_signin %}">{% trans "Signing in" %} / {% trans "Signing up" %}</a></li>
+							{% endif %}
+								<li class="languages">
+									<form action="/i18n/setlang/" method="post">
+										{% csrf_token %}
+										<input type="hidden" name="language" id="language" value="" />
+										{% get_language_info_list for LANGUAGES as languages %}
+										{% for language in languages %}
+											<span data-lang="{{ language.code }}" class="language {{ language.code }} {% if language.code == LANGUAGE_CODE %}active{% endif %}" title="{{ language.name_local }}">{{ language.name_local }}</span>
+										{% endfor %}
+									</form>
+								</li>
+							</ul>
 						</nav><!-- #user_menu -->
 					</div><!-- #user_menu_wrapper -->
 

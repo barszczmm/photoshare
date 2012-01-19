@@ -61,6 +61,11 @@ LOCALE_PATHS = (
     os.path.join(PROJECT_ROOT, '../../../locale/'),
 )
 
+LANGUAGES = (
+    ('pl', 'polski'),
+    ('en', 'English'),
+)
+
 # Absolute filesystem path to the directory that will hold user-uploaded files.
 # Example: "/home/media/media.lawrence.com/media/"
 MEDIA_ROOT = os.path.join(PROJECT_ROOT, '../../../uploads/')
@@ -107,8 +112,10 @@ TEMPLATE_LOADERS = (
 )
 
 MIDDLEWARE_CLASSES = (
-    'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    # cache middleware before locale
+    'django.middleware.locale.LocaleMiddleware',
+    'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
@@ -231,19 +238,23 @@ ANONYMOUS_USER_ID = -1
 
 ### userena ###
 
-# Defines if usernames are used within userena. Currently it’s often for the users convenience that only an email is used for identification. With this setting you get just that.
+# Defines if usernames are used within userena. Currently it’s often for the
+# users convenience that only an email is used for identification.
+# With this setting you get just that.
 USERENA_WITHOUT_USERNAMES = False
 
 # A string which defines the URI where the user will be redirected to after signin.
 USERENA_SIGNIN_REDIRECT_URL = LOGIN_REDIRECT_URL
 
-# Defines the default privacy value for a newly registered user. There are three options:
+# Defines the default privacy value for a newly registered user.
+# There are three options:
 # closed - Only the owner of the profile can view their profile.
 # registered - All registered users can view their profile.
 # open - All users (registered and anonymous) can view their profile.
 USERENA_DEFAULT_PRIVACY = 'open'
 
-# Boolean value that defines if userena should use the django messages framework to notify the user of any changes.
+# Boolean value that defines if userena should use the django messages framework
+# to notify the user of any changes.
 USERENA_USE_MESSAGES = True
 
 
