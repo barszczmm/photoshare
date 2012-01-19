@@ -3,10 +3,22 @@
 
 {% block title %}{% trans "Photos" %}{{ settings.TITLE_SEPARATOR }}{% blocktrans with photo.title as photo_title and photo.user.username as username %}{{ photo_title }} by {{ username }}{% endblocktrans %}{% block titlepart %}{% endblock %}{% endblock %}
 
+{% block afterbodyopen %}
+{% include "social_scripts.html" %}
+{% endblock %}
+
 {% block maintitle %}<a href="{% url photos_list_photos %}">{% trans "Photos" %}</a> / <a href="{{ photo.get_absolute_url }}">{{ photo.title }} <span class="by">{% trans "by" %}</span> {{ photo.user.username }}</a>{% endblock %}
 {% block subtitle %}<span>{% trans "Info" %}</span>{% endblock %}
 
 {% block main %}
+<div class="actions">
+	<div class="social-buttons">
+		<div class="fb-like" data-href="http://{{ site.domain }}{{ photo.get_absolute_url }}" data-send="false" data-layout="button_count" data-width="150" data-show-faces="false"></div>
+		<a href="https://twitter.com/share" class="twitter-share-button" data-lang="{{ LANGUAGE_CODE }}" data-url="http://{{ site.domain }}{{ photo.get_absolute_url }}">Tweet</a>
+		<div class="g-plusone" data-size="medium" data-href="http://{{ site.domain }}{{ photo.get_absolute_url }}"></div>
+	</div>
+</div>
+
 <div class="tabs no-hash">
 
 	<ul class="tabs-titles">
