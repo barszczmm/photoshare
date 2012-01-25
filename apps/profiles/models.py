@@ -20,9 +20,11 @@ class Profile(UserenaBaseProfile):
     birthday = models.DateField(_("birthday"), blank=True, null=True)
     about_me = models.TextField(_("about me"), blank=True, null=True)
     website = models.URLField(_("website"), blank=True, null=True)
+    fan_of = models.ManyToManyField('self', symmetrical=False, related_name='fans')
 
     @models.permalink
     def get_absolute_url(self):
         return ('userena_profile_detail', (), {'username': self.user.username})
     get_absolute_url.short_description = 'url'
+
 
