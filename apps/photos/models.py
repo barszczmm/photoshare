@@ -18,6 +18,9 @@ class Photo(models.Model):
     description = models.TextField(_("description"), blank=True, null=True)
     uploaded_at = models.DateTimeField(_("uploaded at"), auto_now_add=True)
 
+    def __unicode__(self):
+        return self.title
+
     @models.permalink
     def get_absolute_url(self):
         return ('photos_show_photo', (), {'photo_id': self.id})
@@ -26,5 +29,7 @@ class Photo(models.Model):
     class Meta:
         get_latest_by = 'uploaded_at'
         ordering = ['-uploaded_at']
+        verbose_name = _('Photo')
+        verbose_name_plural = _('Photos')
 
 
