@@ -9,8 +9,10 @@ PROJECT_ROOT = os.path.dirname(__file__)
 # add apps to path
 sys.path.insert(0, os.path.join(PROJECT_ROOT, "../../../apps"))
 sys.path.insert(0, os.path.join(PROJECT_ROOT, "../../../apps_ext/django-userena"))
+# this needs to be the latest version from github because of Django 1.4:
 sys.path.insert(0, os.path.join(PROJECT_ROOT, "../../../apps_ext/django-guardian"))
 sys.path.insert(0, os.path.join(PROJECT_ROOT, "../../../apps_ext/django-ratings"))
+sys.path.insert(0, os.path.join(PROJECT_ROOT, "../../../apps_ext/django-barszcz-toolkit"))
 
 DEBUG = False
 TEMPLATE_DEBUG = DEBUG
