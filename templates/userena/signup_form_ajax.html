@@ -1,0 +1,10 @@
+{% extends 'userena/signin_form_ajax.html' %}
+{% load i18n %}
+
+{% block title %}{% trans "Signup" %}{% endblock %}
+
+{% block subtitle %}<span>{% trans "Signup" %}</span>{% endblock %}
+
+{% block tab_content %}
+	{% include 'userena/signup_form_include.html' %}
+{% endblock %}

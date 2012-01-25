@@ -1,0 +1,11 @@
+{% load i18n %}
+
+<div id="title">{% block title %}{% trans "Signin" %}{% endblock %}</div>
+
+<div id="subtitle">{% block subtitle %}<span>{% trans "Signin" %}</span>{% endblock %}</div>
+
+<div id="tab_content">
+	{% block tab_content %}
+		{% include 'userena/signin_form_include.html' %}
+	{% endblock %}
+</div>

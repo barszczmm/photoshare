@@ -1,0 +1,22 @@
+{% load i18n %}
+<form action="{% url userena_signup %}" method="post">
+	{% csrf_token %}
+	<fieldset>
+		<input type="hidden" name="action" value="signup" />
+	{% for field in form %}
+		{{ field.errors }}
+		{% comment %} Displaying checkboxes differently {% endcomment %}
+		{% if field.name == 'tos' %}
+			<p class="checkbox">
+				<label for="id_{{ field.name }}">{{ field }} {{ field.label }}</label>
+			</p>
+		{% else %}
+			<p>
+				{{ field.label_tag }}
+				{{ field }}
+			</p>
+		{% endif %}
+	{% endfor %}
+	</fieldset>
+	<input type="submit" value="{% trans "Signup" %}" />
+</form>
