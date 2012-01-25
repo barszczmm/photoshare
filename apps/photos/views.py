@@ -1,14 +1,15 @@
 from django.core.urlresolvers import reverse
 from django.shortcuts import get_object_or_404
 from django.http import Http404
-from django.utils.decorators import method_decorator
-from django.contrib.auth.decorators import login_required
-from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
+from django.views.generic import ListView, DetailView
 from django.contrib.auth.models import User
+
+from barszcz_toolkit.views.generic import LoginRequiredView, OwnerSingleObjectView, CreateViewWithMessage, UpdateViewWithMessage, DeleteViewWithMessage
 
 from models import Photo
 from forms import PhotoForm
 from profiles.models import Profile
+
 
 
 class PhotosListView(ListView):
@@ -65,7 +66,7 @@ class PhotoDetailView(DetailView):
     pk_url_kwarg = 'photo_id'
 
 
-class PhotoCreateView(CreateView):
+class PhotoCreateView(CreateViewWithMessage, LoginRequiredView):
     """
     Upload user photo.
     """
@@ -81,12 +82,8 @@ class PhotoCreateView(CreateView):
         form.instance = self.model(user=self.request.user)
         return form
 
-    @method_decorator(login_required)
-    def dispatch(self, request, *args, **kwargs):
-        return super(PhotoCreateView, self).dispatch(request, *args, **kwargs)
 
-
-class PhotoUpdateView(UpdateView):
+class PhotoUpdateView(UpdateViewWithMessage, OwnerSingleObjectView):
     """
     Edit user photo.
     """
@@ -98,12 +95,8 @@ class PhotoUpdateView(UpdateView):
     def get_template_names(self):
         return ['photos/photo_form_edit.html']
 
-    @method_decorator(login_required)
-    def dispatch(self, request, *args, **kwargs):
-        return super(PhotoUpdateView, self).dispatch(request, *args, **kwargs)
 
-
-class PhotoDeleteView(DeleteView):
+class PhotoDeleteView(DeleteViewWithMessage, OwnerSingleObjectView):
     """
     Remove user photo.
     """
@@ -113,9 +106,5 @@ class PhotoDeleteView(DeleteView):
 
     def get_success_url(self):
         return reverse('profile_photos', kwargs={'username': self.request.user.username})
-
-    @method_decorator(login_required)
-    def dispatch(self, request, *args, **kwargs):
-        return super(PhotoDeleteView, self).dispatch(request, *args, **kwargs)
 
 
