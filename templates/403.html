@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% load i18n  %}
+
+{% block title %}{% trans "Forbidden" %}{% endblock %}
+
+{% block maintitle %}{% trans "Error 403" %}{% endblock %}
+{% block subtitle %}<span>{% trans "Forbidden" %}</span>{% endblock %}
+
+{% block main %}
+<div class="actions">
+	<a class="action" href="javascript: history.go(-1)">{% trans "Go back" %}</a>
+</div>
+
+<p>{% trans "You don't have access to this page." %}</p>
+{% endblock %}
