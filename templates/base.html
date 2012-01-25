@@ -35,18 +35,8 @@
 
 	<title>{% block title %}{% endblock %} | {{ site.name }}</title>
 </head>
-<body id="{% block body_id %}{% endblock %}" class="{% block body_class %}{% endblock %}">
+<body id="{% block body_id %}{% endblock %}" class="{% if user.is_authenticated %}logged{% else %}notlogged{% endif%} {% block body_class %}{% endblock %}">
 	{% block afterbodyopen %}{% endblock %}
-
-	{% if messages %}
-	<div id="app_messages">
-		<ul>
-			{% for message in messages %}
-			<li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
-			{% endfor %}
-		</ul>
-	</div>
-	{% endif %}
 
 	<div id="page">
 
@@ -60,6 +50,17 @@
 					</hgroup>
 
 					<div id="user_menu_wrapper">
+
+						<div id="app_messages">
+							{% if messages %}
+							<ul>
+								{% for message in messages %}
+								<li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+								{% endfor %}
+							</ul>
+							{% endif %}
+						</div>
+
 						<nav id="user_menu">
 							<ul>
 							{% if user.is_authenticated %}
@@ -87,10 +88,10 @@
 								</li>
 								<li class="messages">
 									{% get_unread_message_count_for user as unread_message_count %}
-									<a href="{% url userena_umessages_list %}">{% trans "Messages" %} <span class="new{% if unread_message_count != 0 %} non-zero{% endif %}">({% blocktrans %}{{ unread_message_count }} new{% endblocktrans %})</span></a>
+									<a href="{% url userena_umessages_list %}"><span class="new{% if unread_message_count != 0 %} non-zero{% endif %}">{% blocktrans %}{{ unread_message_count }} new{% endblocktrans %}</span> {% trans "messages" %}</a>
 								</li>
 							{% else %}
-								<li class="signin"><a href="{% url userena_signin %}">{% trans "Signing in" %} / {% trans "Signing up" %}</a></li>
+								<li class="signin"><a href="{% url userena_signin %}">{% trans "Signin" %} / {% trans "Signup" %}</a></li>
 							{% endif %}
 								<li class="languages">
 									<form action="/i18n/setlang/" method="post">
@@ -112,7 +113,7 @@
 								<ul>
 									<li><a href="{% url userena_profile_list %}">{% trans "Users" %}</a></li>
 									<li><a href="{% url photos_list_photos %}">{% trans "Photos" %}</a></li>
-									<li><a href="{% url photos_add_photo %}">{% trans "Post a photo" %}</a></li>
+									<li><a class="loginrequired" href="{% url photos_add_photo %}">{% trans "Post a photo" %}</a></li>
 									<li><a href="#">{% trans "Forum" %}</a></li>
 								</ul>
 							{% endblock %}
