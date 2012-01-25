@@ -9,6 +9,8 @@ PROJECT_ROOT = os.path.dirname(__file__)
 # add apps to path
 sys.path.insert(0, os.path.join(PROJECT_ROOT, "../../../apps"))
 sys.path.insert(0, os.path.join(PROJECT_ROOT, "../../../apps_ext/django-userena"))
+sys.path.insert(0, os.path.join(PROJECT_ROOT, "../../../apps_ext/django-guardian"))
+sys.path.insert(0, os.path.join(PROJECT_ROOT, "../../../apps_ext/django-ratings"))
 
 DEBUG = False
 TEMPLATE_DEBUG = DEBUG
@@ -233,6 +235,7 @@ AUTHENTICATION_BACKENDS = (
 
 ### django-guardian ###
 ANONYMOUS_USER_ID = -1
+GUARDIAN_RENDER_403 = True
 
 
 
@@ -245,6 +248,9 @@ USERENA_WITHOUT_USERNAMES = False
 
 # A string which defines the URI where the user will be redirected to after signin.
 USERENA_SIGNIN_REDIRECT_URL = LOGIN_REDIRECT_URL
+
+# A string which defines the URI where the user will be redirected to after signout.
+USERENA_REDIRECT_ON_SIGNOUT = LOGIN_URL
 
 # Defines the default privacy value for a newly registered user.
 # There are three options:
