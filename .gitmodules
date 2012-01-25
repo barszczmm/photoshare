@@ -7,3 +7,6 @@
 [submodule "apps_ext/django-guardian"]
 	path = apps_ext/django-guardian
 	url = git@github.com:barszczmm/django-guardian.git
+[submodule "apps_ext/django-barszcz-toolkit"]
+	path = apps_ext/django-barszcz-toolkit
+	url = git@github.com:barszczmm/django-barszcz-toolkit.git
