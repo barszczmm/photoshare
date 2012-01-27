@@ -9,8 +9,9 @@ PROJECT_ROOT = os.path.dirname(__file__)
 # add apps to path
 sys.path.insert(0, os.path.join(PROJECT_ROOT, "../../../apps"))
 sys.path.insert(0, os.path.join(PROJECT_ROOT, "../../../apps_ext/django-userena"))
-# this needs to be the latest version from github because of Django 1.4:
+# this needs to be the latest version from github because of Django 1.4+ timezone support:
 sys.path.insert(0, os.path.join(PROJECT_ROOT, "../../../apps_ext/django-guardian"))
+# this needs to be the latest version from github because of Django 1.4+ timezone support:
 sys.path.insert(0, os.path.join(PROJECT_ROOT, "../../../apps_ext/django-ratings"))
 sys.path.insert(0, os.path.join(PROJECT_ROOT, "../../../apps_ext/django-barszcz-toolkit"))
 
@@ -169,6 +170,7 @@ INSTALLED_APPS = (
     'easy_thumbnails',
     'userena',
     'userena.contrib.umessages',
+    'djangoratings',
     'context_extras',
 
     'profiles',
@@ -264,6 +266,9 @@ USERENA_DEFAULT_PRIVACY = 'open'
 # Boolean value that defines if userena should use the django messages framework
 # to notify the user of any changes.
 USERENA_USE_MESSAGES = True
+
+# which app/tool/library should be used to resize user avatars
+USERENA_MUGSHOT_CROP_APP = 'PIL'
 
 
 
