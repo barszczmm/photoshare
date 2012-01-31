@@ -1,13 +1,17 @@
 # Django 1.4-alpha-1 must be installed by hand
 #Django==1.4-alpha-1
-MySQL-python==1.2.3
-PIL==1.1.7
-django-context-extras==0.2.4
+MySQL-python
+PIL
+django-context-extras
 
 #django-userena==1.0.2
 # my version of django-userena
 -e git://github.com/barszczmm/django-userena.git#egg=django-userena
 # needed by django-userena (will not be auto installed if my version from git is used)
-django-guardian==1.0.3
+django-guardian
 # needed by django-userena (will not be auto installed if my version from git is used)
-easy-thumbnails==1.0-alpha-21
+# not needed anymore in my version
+#easy-thumbnails==1.0-alpha-21
+
+# django-ratings
+-e git://github.com/dcramer/django-ratings.git#egg=django-ratings
