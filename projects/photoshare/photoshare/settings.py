@@ -270,6 +270,11 @@ USERENA_USE_MESSAGES = True
 # which app/tool/library should be used to resize user avatars
 USERENA_MUGSHOT_CROP_APP = 'PIL'
 
+USERENA_USERNAME_MIN_LENGTH = 4
+USERENA_USERNAME_MAX_LENGTH = 20
+USERENA_PASSWORD_MIN_LENGTH = 6
+USERENA_PASSWORD_MAX_LENGTH = 30
+
 
 
 ### my custom settings ###
