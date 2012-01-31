@@ -116,7 +116,7 @@ $(document).ready(function() {
 
 	topBarFunctions();
 
-	loginRequiredLinks();
+	//loginRequiredLinks();
 
 	formsFunctions();
 
