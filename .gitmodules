@@ -1,12 +1,6 @@
 [submodule "apps_ext/django-userena"]
 	path = apps_ext/django-userena
 	url = git@github.com:barszczmm/django-userena.git
-[submodule "apps_ext/django-ratings"]
-	path = apps_ext/django-ratings
-	url = git@github.com:barszczmm/django-ratings.git
-[submodule "apps_ext/django-guardian"]
-	path = apps_ext/django-guardian
-	url = git@github.com:barszczmm/django-guardian.git
 [submodule "apps_ext/django-barszcz-toolkit"]
 	path = apps_ext/django-barszcz-toolkit
 	url = git@github.com:barszczmm/django-barszcz-toolkit.git
