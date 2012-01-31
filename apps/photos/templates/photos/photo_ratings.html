@@ -1,0 +1,76 @@
+{% extends 'photos/photo_detail.html' %}
+{% load i18n comments %}
+
+{% block titlepart %}{{ settings.TITLE_SEPARATOR }}{% trans "Ratings" %}{% endblock %}
+
+{% block subtitle %}<span>{% trans "Ratings" %}</span>{% endblock %}
+
+
+{% block tabs_titles %}
+<li class="tab-title"><a href="{{ photo.get_absolute_url }}">{% trans "Info" %}</a></li>
+<li class="tab-title"><a href="{% url photos_comments_photo photo.id %}">{% trans "Comments" %}</a></li>
+<li class="tab-title active"><a href="{% url photos_ratings_photo photo.id %}">{% trans "Ratings" %}</a></li>
+{% if photo.user == user %}
+	<li class="tab-title"><a href="{% url photos_edit_photo photo.id %}">{% trans "Edit photo" %}</a></li>
+	<li class="tab-title"><a href="{% url photos_remove_photo photo.id %}">{% trans "Delete photo" %}</a></li>
+{% endif %}
+{% endblock %}
+
+{% block tab_content %}
+
+	{% if user.get_profile %}
+		<p id="add_rating">
+			<span class="intro">{% trans "Rate this photo:" %}</span>
+			{% for i in 12345|make_list %}
+				<a data-score="{{ i }}" class="score score-{{ i }}" href="{% url photos_rate_photo photo.pk i %}">{{ i }}</a>
+			{% endfor %}
+		</p>
+	{% endif %}
+
+	<ul id="rating_list">
+	{% for rating in photo.rating.get_ratings %}
+		<li class="rating{% if rating.user == user %} by-me{% endif %}{% if rating.user == photo.user %} by-user{% endif %}">
+			<a href="{% url userena_profile_detail rating.user.username %}" title="{{ rating.user.username }}">
+				<img src="{{ rating.user.get_profile.get_mugshot_url }}" alt="{{ rating.user.username }}" title="{{ rating.user.username }}" />
+			</a>
+			<div class="info">
+				<p class="meta"><a class="username" href="{% url userena_profile_detail rating.user.username %}">{{ rating.user.username }}</a> <time class="datetime" datetime="{{ rating.date_changed }}">({{ rating.date_changed }})</time></p>
+				<div class="body">
+					<p class="rating-value">
+					{% for i in 12345|make_list %}
+						<span data-score="{{ i }}" class="score score-{{ i }}{% if forloop.counter == rating.score %} active{% endif %}">{{ i }}</span>
+					{% endfor %}
+					</p>
+
+					{% if rating.user == user %}
+						{% get_comment_count for rating as comment_count %}
+						{% if comment_count == 0 %}
+							{% get_comment_form for rating as form %}
+							<form action="{% comment_form_target %}" method="post" id="post_comment">
+								{% csrf_token %}
+								<fieldset>
+									{% for hidden in form.hidden_fields %}
+										{{ hidden }}
+									{% endfor %}
+									<input type="hidden" name="next" value="{% url photos_ratings_photo photo.id %}" />
+									<p>
+										<label for="id_comment">{% trans "Explain your rating if you want" %}</label>
+										{{ form.comment }}
+									</p>
+								</fieldset>
+								<input type="submit" name="submit" value="{% trans "Submit" %}" />
+							</form>
+						{% else %}
+							{% get_comment_list for rating as comment_list %}
+							{% for comment in comment_list %}
+								<p class="comment">{{ comment.comment|linebreaksbr }}</p>
+							{% endfor %}
+						{% endif %}
+					{% endif %}
+				</div>
+			</div>
+		</li>
+	{% endfor %}
+	</ul>
+
+{% endblock %}

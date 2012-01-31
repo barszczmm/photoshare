@@ -44,7 +44,7 @@ var animateErrors = function() {
 };
 
 // all forms related functions
-var formsFunction = function() {
+var formsFunctions = function() {
 	animateErrors();
 	animateSubmitButton();
 	validateCommentForm();
@@ -96,7 +96,7 @@ var languagesForm = function() {
 
 // all top bar functions
 var topBarFunctions = function() {
-	appMessageAnimation();
+	animateAppMessages();
 	usermenuInfo();
 	languagesForm();
 }
@@ -118,7 +118,11 @@ $(document).ready(function() {
 
 	loginRequiredLinks();
 
-	formsFunction();
+	formsFunctions();
+
+	// ratings
+	$('#add_rating .score, #rating_list .score').wrapInner('<span class="fg" />').append('<span class="bg" />');
+	$('#add_rating .score .bg, #rating_list .score .bg').css({opacity: function() { return $(this).parent().data('score')/5; }});
 
 
 	// tabs

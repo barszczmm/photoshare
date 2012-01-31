@@ -1,8 +1,12 @@
 from django.core.urlresolvers import reverse
-from django.shortcuts import get_object_or_404
+from django.shortcuts import get_object_or_404, redirect
 from django.http import Http404
 from django.views.generic import ListView, DetailView
 from django.contrib.auth.models import User
+from django.contrib.auth.decorators import login_required
+from django.contrib import messages
+
+from djangoratings.views import AddRatingFromModel
 
 from barszcz_toolkit.views.generic import LoginRequiredView, OwnerSingleObjectView, CreateViewWithMessage, UpdateViewWithMessage, DeleteViewWithMessage
 
@@ -107,4 +111,23 @@ class PhotoDeleteView(DeleteViewWithMessage, OwnerSingleObjectView):
     def get_success_url(self):
         return reverse('profile_photos', kwargs={'username': self.request.user.username})
 
+
+@login_required
+def rate_photo(request, photo_id, score):
+    """
+    Save rating for photo.
+    """
+    params = {
+        'app_label': 'photos',
+        'model': 'photo',
+        'object_id': photo_id,
+        'field_name': 'rating',
+        'score': score,
+    }
+    response = AddRatingFromModel()(request, **params)
+    if response.status_code == 200 :
+        messages.success(request, response.content, fail_silently=True)
+    else:
+        messages.error(request, response.content, fail_silently=True)
+    return redirect('photos_ratings_photo', photo_id=photo_id)
 

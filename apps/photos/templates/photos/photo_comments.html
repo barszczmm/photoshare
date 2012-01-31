@@ -9,6 +9,7 @@
 {% block tabs_titles %}
 <li class="tab-title"><a href="{{ photo.get_absolute_url }}">{% trans "Info" %}</a></li>
 <li class="tab-title active"><a href="{% url photos_comments_photo photo.id %}">{% trans "Comments" %}</a></li>
+<li class="tab-title"><a href="{% url photos_ratings_photo photo.id %}">{% trans "Ratings" %}</a></li>
 {% if photo.user == user %}
 	<li class="tab-title"><a href="{% url photos_edit_photo photo.id %}">{% trans "Edit photo" %}</a></li>
 	<li class="tab-title"><a href="{% url photos_remove_photo photo.id %}">{% trans "Delete photo" %}</a></li>
@@ -38,7 +39,7 @@
 	{% get_comment_list for photo as comment_list %}
 	<ul id="comment_list">
 	{% for comment in comment_list reversed %}
-		<li class="comment {% if comment.user == user %} by-me{% endif %}{% if comment.user == profile.user %} by-user{% endif %}">
+		<li class="comment{% if comment.user == user %} by-me{% endif %}{% if comment.user == photo.user %} by-user{% endif %}">
 			<a href="{% url userena_profile_detail comment.user.username %}" title="{{ comment.user.username }}">
 				<img src="{{ comment.user.get_profile.get_mugshot_url }}" alt="{{ comment.user.username }}" title="{{ comment.user.username }}" />
 			</a>

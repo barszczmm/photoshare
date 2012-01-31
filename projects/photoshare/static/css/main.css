@@ -216,6 +216,28 @@ input[type=submit] { line-height: 20px; padding: 6px 12px; font-weight: bold; fo
 #comment_list .username { font-weight: bold; font-variant: small-caps; font-size: 12px; }
 #comment_list .datetime { font-size: 10px; color: #ccc; }
 
+#add_rating { overflow: hidden; }
+#add_rating .intro { float: left; margin-right: 1em; padding-top: 4px; }
+.score { display: block; width: 20px; height: 20px; float: left; position: relative; border: 2px solid #fff; }
+#add_rating .score:hover { border-color: #666; }
+.score .fg, .score .bg { position: absolute; left: 0; top: 0; display: block; width: 100%; height: 100%; }
+.score .fg { z-index: 50; text-align: center; font-size: 13px; font-weight: bold; color: #fff; }
+.score .bg { background-color: #D16F4E; }
+
+#rating_list { padding-top: 10px; }
+#rating_list li { overflow: hidden; margin-top: 10px; }
+#rating_list img { border: 1px solid #E1E1E1; padding: 3px; float: left; width: 80px; height: 80px; }
+#rating_list .info { padding-top: 5px; margin-left: 98px; }
+#rating_list .meta { margin-bottom: 5px; }
+#rating_list .username { font-weight: bold; font-variant: small-caps; font-size: 12px; }
+#rating_list .datetime { font-size: 10px; color: #ccc; }
+#rating_list .rating-value { overflow: hidden; margin-bottom: 4px; }
+#rating_list .score:hover { border-color: #fff; }
+#rating_list .score.active { border-color: #666; }
+#rating_list fieldset { float: left; }
+#rating_list textarea { height: 14px; }
+#rating_list input[type=submit] { float: left; margin: 16px 0 0 6px; }
+
 #message_list li { overflow: hidden; margin-top: 10px; }
 #message_list img { border: 1px solid #E1E1E1; padding: 3px; float: left; width: 80px; height: 80px; }
 #message_list .info { margin-left: 98px; }
@@ -235,5 +257,6 @@ input[type=submit] { line-height: 20px; padding: 6px 12px; font-weight: bold; fo
 .photo > footer { margin-bottom: 10px; }
 .photo .username { font-variant: small-caps; }
 .photo .datetime:after { content: " / "; margin: 0 0.5em; }
+.photo .rating:before { content: " / "; margin: 0 0.5em; }
 .photo .description { margin-top: 10px; }
 

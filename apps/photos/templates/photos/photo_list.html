@@ -30,6 +30,7 @@
 							{% blocktrans with photo.user.get_profile.get_absolute_url as user_url and photo.user.username as username and photo.uploaded_at as added_at %}Added by <a class="username" href="{{ user_url }}">{{ username }}</a> at <time class="datetime" datetime="{{ added_at }}">{{ added_at }}</time>
 							{% endblocktrans %}
 							<a class="comments" href="{% url photos_comments_photo photo.id %}">{% blocktrans %}{{ comment_count }} comments{% endblocktrans %}</a>
+							<a class="rating" href="{% url photos_ratings_photo photo.id %}">{% blocktrans with photo.rating.get_rating as rating and photo.rating.votes as votes %}rating: {{ rating }} ({{ votes }} votes){% endblocktrans %}</a>
 						</p>
 					</footer>
 					<img src="{{ photo.image.url }}" />
