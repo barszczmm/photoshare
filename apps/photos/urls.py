@@ -1,5 +1,7 @@
 from django.conf.urls.defaults import *
 
+from djangoratings.views import AddRatingFromModel
+
 from views import PhotosListView, PhotoDetailView, PhotoCreateView, PhotoUpdateView, PhotoDeleteView
 
 urlpatterns = patterns('',
@@ -31,5 +33,14 @@ urlpatterns = patterns('',
     url(r'^photos/(?P<photo_id>[\d]+)/comments/$',
         PhotoDetailView.as_view(template_name='photos/photo_comments.html'),
         name='photos_comments_photo'),
+
+    url(r'photos/(?P<object_id>\d+)/rate/(?P<score>\d+)/',
+        AddRatingFromModel(),
+        {
+            'app_label': 'photos',
+            'model': 'photo',
+            'field_name': 'rating',
+        },
+        name='photos_rate'),
 
 )
